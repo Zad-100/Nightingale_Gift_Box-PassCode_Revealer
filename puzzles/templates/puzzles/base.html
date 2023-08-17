@@ -1,0 +1,29 @@
+<!--
+  This is the base template for all pages in the puzzles app.
+  It contains the header and the content block.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <!-- Responsive Meta Tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PassCode Revealer</title>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header>
+      <!-- Link to Home Page -->
+      <a href="{% url 'puzzles:index' %}">Home</a>
+    </header>
+
+    <!-- Body Content Block -->
+    <main>
+      {% block content %}
+      {% endblock %}
+    </main>
+  </body>
+</html>
