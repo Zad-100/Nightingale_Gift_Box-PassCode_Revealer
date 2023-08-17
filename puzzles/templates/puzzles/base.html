@@ -3,6 +3,9 @@
   It contains the header and the content block.
 -->
 
+<!--Load the static files of top-level (for the entire project)-->
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,6 +14,24 @@
     <!-- Responsive Meta Tag -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PassCode Revealer</title>
+
+    <!--**Favicon Installation**-->
+    <!-- Android Chrome Icons -->
+    <link rel="icon" sizes="192x192" href="{% static 'icons/android-chrome-192x192.png' %}">
+    <link rel="icon" sizes="512x512" href="{% static 'icons/android-chrome-512x512.png' %}">
+
+    <!-- Apple Touch Icon (for iOS) -->
+    <link rel="apple-touch-icon" href="{% static 'icons/apple-touch-icon.png' %}">
+
+    <!-- Favicon (for most browsers) -->
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'icons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'icons/favicon-16x16.png' %}">
+
+    <!-- Favicon for older browsers -->
+    <link rel="shortcut icon" href="{% static 'icons/favicon.ico' %}">
+
+    <!-- Web manifest for progressive web apps -->
+    <link rel="manifest" href="{% static 'icons/site.webmanifest' %}">
   </head>
 
   <body>
