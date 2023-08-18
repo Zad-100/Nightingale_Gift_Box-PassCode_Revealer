@@ -9,4 +9,7 @@ app_name = 'puzzles'
 urlpatterns = [
     # Home Page
     path('', views.index, name='index'),
+
+    # Slider Puzzle Page
+    path('slider-puzzle/', views.sliderPuzzle, name='sliderPuzzle'),
 ]
