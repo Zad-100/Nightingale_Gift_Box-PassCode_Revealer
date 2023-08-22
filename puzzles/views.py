@@ -16,3 +16,7 @@ def crosswordPuzzle(request):
     """The crossword puzzle page"""
     return render(request, 'puzzles/crosswordPuzzle.html')
 # end view crosswordPuzzle()
+
+def hangmanPuzzle(request):
+    """The hangman puzzle page"""
+    return render(request, 'puzzles/hangmanPuzzle.html')

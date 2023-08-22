@@ -1,0 +1,50 @@
+<!--
+  This page is the template for the hangman puzzle. The hangman puzzle is a
+  JavaScript game that is loaded in the template below. The JavaScript file
+  is called "hangmanPuzzle.js" and is stored in the "puzzles/static/puzzles/js"
+  folder.
+-->
+
+
+{% extends "puzzles/base.html" %}
+
+{% load static %}
+
+
+{% block extracss %}
+  <link rel="stylesheet" href="{% static 'puzzles/css/hangmanPuzzle.css' %}">
+{% endblock %}
+
+{% block content %}
+  <h1>Welcome to the Hangman Puzzle!</h1>
+  <p>Solve this puzzle to get the last digit of the lock</p>
+
+  <div class="game-modal">
+    <div class="content">
+      <img src="#" alt="gif">
+      <h4>Game Over!</h4>
+      <p>The correct word was: <b>rainbow</b></p>
+      <button class="play-again">Play Again</button>
+    </div>
+  </div>
+  <div class="container">
+    <div class="hangman-box">
+      <img src="#" draggable="false" alt="hangman-img">
+      <h1>Hangman Game</h1>
+    </div>
+    <div class="game-box">
+      <ul class="word-display"></ul>
+      <h4 class="hint-text">Hint: <b></b></h4>
+      <h4 class="guesses-text">Incorrect guesses: <b></b></h4>
+      <div class="keyboard"></div>
+    </div>
+  </div>
+
+  <!-- Load the JavaScript for the hangman puzzle. -->
+  <script>
+    const staticImagePath = "{% static 'puzzles/images/hangman/' %}";
+  </script>
+
+  <script src="{% static 'puzzles/js/hangmanPuzzle.js' %}"></script>
+  <script src="{% static 'puzzles/js/wordsList.js' %}"></script>
+{% endblock %}

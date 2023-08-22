@@ -16,5 +16,6 @@ urlpatterns = [
     # Crossword Puzzle Page
     path('crossword-puzzle/', views.crosswordPuzzle, name='crosswordPuzzle'),
 
-    
+    # Hangman Puzzle Page
+    path('hangman-puzzle/', views.hangmanPuzzle, name='hangmanPuzzle'),
 ]
