@@ -1,0 +1,28 @@
+<!--
+  This is the template for the crossword puzzle. I have used an online tool to
+  generate the crossword puzzle. The tool is called "My Crossword Maker"
+  and can be found at https://mycrosswordmaker.com/. The tool generates
+  a JavaScript file that can be used to render the crossword puzzle. The
+  JavaScript file is stored in the "puzzles/static/puzzles/js" folder.
+  The JavaScript file is loaded in the template below. The JavaScript
+  file is called "crosswordPuzzle.js".
+-->
+
+{% extends "puzzles/base.html" %}
+
+{% load static %}
+
+
+{% block extracss %}
+<link rel="stylesheet" href="{% static 'puzzles/css/crosswordPuzzle.css' %}">
+{% endblock %}
+
+{% block content %}
+  <h1>Welcome to the Crossword Puzzle!</h1>
+  <p>Solve this puzzle to get the next digit of the lock</p>
+
+
+  <div class="crossword-container">
+    <iframe title="NG-BDay-CW" class="crossword-iframe" frameborder="0" src="https://crosswordlabs.com/embed/nightingales-birthday-crossword"></iframe>
+  </div>
+{% endblock %}

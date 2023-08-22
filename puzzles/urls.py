@@ -12,4 +12,9 @@ urlpatterns = [
 
     # Slider Puzzle Page
     path('slider-puzzle/', views.sliderPuzzle, name='sliderPuzzle'),
+
+    # Crossword Puzzle Page
+    path('crossword-puzzle/', views.crosswordPuzzle, name='crosswordPuzzle'),
+
+    
 ]

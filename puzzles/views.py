@@ -11,3 +11,8 @@ def sliderPuzzle(request):
     """The slider puzzle page"""
     return render(request, 'puzzles/sliderPuzzle.html')
 # end view sliderPuzzle()
+
+def crosswordPuzzle(request):
+    """The crossword puzzle page"""
+    return render(request, 'puzzles/crosswordPuzzle.html')
+# end view crosswordPuzzle()
