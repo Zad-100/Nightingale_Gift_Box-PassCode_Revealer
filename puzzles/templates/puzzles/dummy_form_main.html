@@ -1,0 +1,57 @@
+<!--
+  This page is where Nightingale is introduced to the 3rd part of the puzzles
+  app where she's asked to fill up a form in categories about how much she
+  knows herself. Next, she's told that some categories are mandatory to
+  fill and some are optional that she can select. After that, she's shown
+  the whole structure of the form as `name_name` along with the
+  `number_of_questions` in them. The required ones are shown as a list and
+  the optional ones are shown as radio buttons.
+
+  After she hits the submit button on this page she shall be redirected to
+  the first name form page. After completing it and submitting it,
+  she will be redirected to a success page and shown a button to go for
+  the next form, and so on.
+-->
+
+{% extends "puzzles/base.html" %}
+
+{% block content %}
+  <h1>How Much Do You Know About Yourself???</h1>
+  <p>
+    We happen to know more about you than you do yourself and hence, this test!
+  </p>
+  <p>
+    There are a set of questions that you need to answer. The questions are
+    divided into various categories like colours and fashion, food, etc. Some
+    of them are mandatory to answer and some are optional. You can choose which
+    category you want to answer questions from among the optional ones. Each
+    question carries some hidden weight. The sum of the weights of the
+    questions you answer correctly will be the overall score. "How should I
+    match my answers to the answers in the answer key exactly?", you ask? Well,
+    we have an algorithm and ChatGPT 4 in place to take care of that. So, don't
+    worry about it. Just answer the questions as honestly as you can and in
+    any way you see fit to answer that question.
+  </p>
+  <p>
+    Below is the structure of the form. The categories are listed along with
+    the number of questions in them. The required ones are shown as a list
+    and the optional ones are shown as radio buttons. You can select the
+    optional ones you want to answer questions from.
+  </p>
+
+  <h3>Mandotory Categories:</h3>
+  <ul>
+    {% for name, question_count in mandatory_categories.items %}
+      <li>{{ name }} ({{ question_count }} Questions)</li>
+    {% endfor %}
+  </ul>
+
+  <h3>Optional Categories:</h3>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+  </form>
+
+
+{% endblock %}

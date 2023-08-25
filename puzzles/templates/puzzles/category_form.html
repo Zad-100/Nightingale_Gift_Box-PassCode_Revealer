@@ -1,0 +1,22 @@
+<!--
+  This is the form called "How much do you know about yourself?". Here,
+  Nightingale will be asked to answer a series of questions about herself.
+  The questions are divided into various categories viz. ['colours_fashion',
+  'food_treats', 'entertainment', 'music_songs', 'personal_lifestyle',
+  'travel', 'relationships_sentiments']. Nightingale can select which category
+  she wants to answer questions from. The questions are the labels of the form
+  fields made in forms.py.
+-->
+
+{% extends "puzzles/base.html" %}
+
+{% block content %}
+  <h1>How much do you know about yourself?</h1>
+  <p>Answer the following questions to get the second digit of your passcode.</p>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+  </form>
+{% endblock %}
