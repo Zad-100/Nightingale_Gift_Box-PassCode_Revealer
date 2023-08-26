@@ -13,11 +13,16 @@ urlpatterns = [
     # Slider Puzzle Page
     path('slider-puzzle/', views.slider_puzzle, name='slider-puzzle'),
 
+    # Message 1 Page
+    path('message-1/', views.message_1, name='message-1'),
+
     # Crossword Puzzle Page
     path('crossword-puzzle/', views.crossword_puzzle, name='crossword-puzzle'),
 
+    # Message 2 Page
+    path('message-2/', views.message_2, name='message-2'),
+
     # Dummy Form Page
-    
     # Page to select the form category
     path('how-much-do-you-know-yourself/', views.dummy_form_main_view,
         name='dummy-form-main'),

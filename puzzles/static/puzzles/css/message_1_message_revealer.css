@@ -1,0 +1,9 @@
+#hiddenMessage {
+    display: none;
+}
+
+#sldrPic {
+    width: 360px;
+    height: 360px;
+    align-self: center;
+}

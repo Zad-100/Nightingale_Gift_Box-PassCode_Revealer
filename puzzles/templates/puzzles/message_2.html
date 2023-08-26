@@ -1,0 +1,56 @@
+<!--
+  This is the second message page shown to her that would reveal the second
+  digit of the combination lock. This page would be shown after she solves the
+  crossword puzzle
+-->
+
+
+{% extends "puzzles/base.html" %}
+
+
+{% load static %}
+
+
+<!-- {% block extracss %}
+  <link rel="stylesheet" href="{% static 'puzzles/css/message_2_message_revealer.css' %}">
+{% endblock %} -->
+
+
+{% block content %}
+  <h1>축하해요!!!!</h1>
+  <h4>(chughahaeyo!!!!)</h4>
+
+  <p>
+    You have successfully solved the crossword puzzle and have earned the second
+    digit of your passcode.
+  </p>
+  <p>
+    The second digit is <strong>2</strong>.
+  </p>
+
+  <p>
+    I really really hope yaar ki this crossword made you smile somehow 🤞🏻🥺
+    and rekindled some of the cutest, funniest, and most memorable moments of
+    your life. Em assuming ki you had as much fun solving this crossword as I
+    had creating it for you. Like, honestly, I had a blast creating
+    this crossword specially the clues. 😌 Of course, I was helped quite a
+    bit by GPT 4 with the riddles building part. 🤖
+  </p>
+  <p>
+    While I was framing those questions so many of those conversations and
+    memories came rushing back to me. I was literally laughing out loud 🤣 and
+    (crying too, may be 👉🏻👈🏻) clutching my stomach for some.
+    Tujhe v waisaa he feel huaa ho yehi mri aashaa hai 🥺💖
+  </p>
+
+  <p>
+    Now, it's time for the third puzzle to get you the third digit of the
+    passcode. This one is a bit tricky, you will see why. 😈 Whenever you are
+    ready, click on the button below to proceed to the next puzzle.
+  </p>
+  <p>
+    <button type="button">
+      <a href="{% url 'puzzles:dummy-form-main' %}">Next Puzzle</a>
+    </button>
+  </p>
+{% endblock %}

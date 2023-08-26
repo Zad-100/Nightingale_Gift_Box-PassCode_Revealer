@@ -19,13 +19,25 @@ def index(request):
 def slider_puzzle(request):
     """The slider puzzle page"""
     return render(request, 'puzzles/slider_puzzle.html')
-# end view sliderPuzzle()
+# end view slider_puzzle()
+
+
+def message_1(request):
+    """The message page after completing slider puzzle successfully"""
+    return render(request, 'puzzles/message_1.html')
+# end view message_1()
 
 
 def crossword_puzzle(request):
     """The crossword puzzle page"""
     return render(request, 'puzzles/crossword_puzzle.html')
-# end view crosswordPuzzle()
+# end view crossword_puzzle()
+
+
+def message_2(request):
+    """The message page after completing crossword puzzle successfully"""
+    return render(request, 'puzzles/message_2.html')
+# end view message_2()
 
 
 def dummy_form_main_view(request):

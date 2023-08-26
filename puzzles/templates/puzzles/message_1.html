@@ -1,0 +1,54 @@
+<!--
+  This is the first message page shown to her that would reveal the first
+  digit of the combination lock. This page would be shown after she solves the
+  slider puzzle
+-->
+
+{% extends "puzzles/base.html" %}
+
+{% load static %}
+
+{% block extracss %}
+<link rel="stylesheet" href="{% static 'puzzles/css/message_1_message_revealer.css' %}">
+{% endblock %}
+
+
+{% block content %}
+  <h1>Congratulazioni!!!!</h1>
+  <p>
+    You have successfully solved the slider puzzle and have earned the first
+    digit of your passcode.
+  </p>
+  <p>
+    The first digit is <strong>1</strong>.
+  </p>
+  <p>
+    So, this was the photu I used for making the slider puzzle: <br>
+    <img id="sldrPic" src="{% static 'puzzles/images/Slider_Puzzle_Sexy_Pic_Edited.png' %}" alt="First Pic You Ever Shared With Me"> <br>
+
+    Tujhe yaad hai kyaa yeh photu ke baare??? 🌚
+
+    <button type="button" id="showMessageButton">Click to Know</button>
+    <div id="hiddenMessage">
+      <p>
+        This was the very first pic that you ever shared with me (and that was
+        over mail, lol). You would think why that means so much to me.
+        Well, that somehow gave me the confidence that you trust me and em
+        a good man, girls can trust themselves with. 🤷🏻‍♂️
+      </p>
+    </div>
+
+    <!--Load the javascript file-->
+    <script src="{% static 'puzzles/js/message_1_message_revealer.js' %}"></script>
+  </p>
+
+  <p>
+    Anyway, ready for the next puzzle?? Just hit the button below to
+    get started with the next puzzle!
+  </p>
+  <p>
+    <button type="button">
+      <a href="{% url 'puzzles:crossword-puzzle' %}">Next Puzzle</a>
+    </button>
+  </p>
+{% endblock %}
