@@ -20,11 +20,9 @@ urlpatterns = [
     
     # Page to select the form category
     path('how-much-do-you-know-yourself/', views.dummy_form_main_view,
-         name='dummy-form-main'),
+        name='dummy-form-main'),
     
     # Form page for the selected category
     path('how-much-do-you-know-yourself/<str:form_category>/',
-         views.category_form_view, name='category-form-view'),
-
-    
+        views.category_form_view, name='category-form-view'),
 ]

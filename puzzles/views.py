@@ -127,17 +127,22 @@ def category_form_view(request, form_category):
             form.save()
             
             # Get the next category
-            selected_categories = request.session['selected_categories']
+            selected_categories = request.session.get('selected_categories', [])
             request.session['curr_category_index'] += 1
-            curr_category_index = request.session['curr_category_index']
+            curr_category_index = request.session.get('curr_category_index', 0)
 
-            if curr_category_index >= len(selected_categories) - 1:
+            if curr_category_index <= len(selected_categories) - 1:
                 next_category = selected_categories[curr_category_index]
 
                 # Redirect to the next category form
                 return redirect('puzzles:category-form-view',
                                 form_category=next_category)
             else:
+                # All categories submitted by Nightingale; so clear
+                # session variables
+                del request.session['selected_categories']
+                del request.session['curr_category_index']
+
                 # Redirect to message page that will ask her to enter
                 # the passcode
                 # return redirect('puzzles:passcode-check')
@@ -150,9 +155,3 @@ def category_form_view(request, form_category):
     context = {'form': form}
     return render(request, 'puzzles/category_form.html', context)
 # end view dummy_form()
-
-
-# def passcode_check(request):
-#     """Page to check if she's got the passcode right - right digits and order"""
-#     return render(request, 'puzzles/passcode_check.html')
-# # end view passcode_check()
