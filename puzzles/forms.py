@@ -2,6 +2,18 @@ from django import forms
 from .models import Colour_and_Fashion, FoodTreats, Entertainment, MusicSongs
 from .models import PersonalLifestyle, Travel, RelationshipsSentiments
 
+
+class PasscodeForm(forms.Form):
+    """Form to take passcode from Nightingale for verification of passcode."""
+
+    passcode = forms.IntegerField(
+        label="Enter the passcode for verification, here:",
+        widget=forms.PasswordInput()
+    )
+# end class PasscodeForm
+
+
+
 class OptionalCategoriesForm(forms.Form):
     """Form to take Optional Categories of Nightingale."""
     

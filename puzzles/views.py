@@ -1,10 +1,12 @@
-from os import name
 from django.shortcuts import render, redirect
 
 from .forms import OptionalCategoriesForm
 from .forms import ColoursFashionForm, FoodTreatsForm, EntertainmentForm
 from .forms import MusicSongsForm, PersonalLifestyleForm, TravelForm
 from .forms import RelationshipsSentimentsForm
+from .forms import PasscodeForm
+
+PASSCODE = 123
 
 # Create your views here.
 
@@ -155,3 +157,72 @@ def category_form_view(request, form_category):
     context = {'form': form}
     return render(request, 'puzzles/category_form.html', context)
 # end view dummy_form()
+
+
+def passcode_check(request):
+    """Page to check if she's got the passcode right - right digits and order"""
+
+    # Session variable storing the total number of attempts left
+    if 'attempts_left' not in request.session:
+        request.session['attempts_left'] = 3
+    # end if
+
+    # Session variable to store whether to show the wait and redirect script
+    if 'show_redirect_script' not in request.session:
+        request.session['show_redirect_script'] = False
+    # end if
+
+    if request.method == 'POST':
+        form = PasscodeForm(request.POST)
+        if form.is_valid():
+            passcode = form.cleaned_data['passcode']
+
+            print("")
+            print("")
+            print("******************PASSCODE********************", passcode,
+                  sep='\n')
+            print("")
+            print("")
+
+            if passcode == PASSCODE:
+                # Reset the number of attempts for another attempt
+                del request.session['attempts_left']
+
+                # Change the session state of verification to True
+                request.session['passcode_verified'] = True
+                # Show the wait and redirect script
+                request.session['show_redirect_script'] = True
+            else:
+                # Decrement the attempts left
+                request.session['attempts_left'] -= 1
+
+                if request.session['attempts_left'] <= 0:
+                    # Reset the number of attempts for another attempt
+                    del request.session['attempts_left']
+                    
+                    # Change the session state of verification to False
+                    request.session['passcode_verified'] = False
+                    # Show the wait and redirect script
+                    request.session['show_redirect_script'] = True
+                # end if
+            # end if-else
+    else:
+        form = PasscodeForm()
+    # end if-else
+
+    context = {
+        'form': form,
+        'attempts_left': request.session.get('attempts_left', 3),
+        'passcode_verified': request.session.get('passcode_verified', None),
+        'show_redirect_script': request.session.get('show_redirect_script',
+                                                    False),
+    }
+
+    return render(request, 'puzzles/passcode_check.html', context)
+# end view passcode_check()
+
+
+def final_message(request):
+    """The final message page"""
+    return render(request, 'puzzles/final_message.html')
+# end view final_message()
