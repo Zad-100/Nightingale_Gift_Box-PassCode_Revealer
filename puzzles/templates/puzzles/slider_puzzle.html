@@ -10,6 +10,10 @@
 
 {% load static %}
 
+{% block title %}
+  <title>Slider Puzzle</title>
+{% endblock %}
+
 
 {% block extracss %}
 <link rel="stylesheet" href="{% static 'puzzles/css/sliderPuzzle.css' %}">
@@ -18,7 +22,19 @@
 
 {% block content %}
   <h1>Welcome to the Slider Puzzle!</h1>
-  <p>Solve the puzzle to get the first digit of your passcode.</p>
+  <p>
+    This is the first of the puzzles you got to solve to get your complete
+    passcode! 😉 This puzzle is a picture-slider-puzzle. The goal is to get the
+    images in a sensible order.
+  </p>
+  <p>
+    ⚠ You can only move the images that are next to the <i>"Move Me"</i>
+    tile either <b>horizontally or vertically</b>.
+  </p>
+  <p>
+    👇🏻 Simply click on the tile you want to move and it will swap places with
+    the <i>Move Me</i> tile.
+  </p>
 
   <div id="sliderPuzzleContainer", class="board">
     <!-- The slider puzzle grid will be rendered here via JavaScript -->
@@ -34,7 +50,15 @@
   </div>
   
   <!--Create a solve button for debugging-->
-  <button type="button" id="solve-button">Solve</button>
+  <p>
+    <button type="button" id="solve-button">Solve</button>
+  </p>
+
+  <!--Define the redirect variable for JavaScript-->
+  <script>
+    // Inline JavaScript just for the URL generation
+    var message_1_URL = "{% url 'puzzles:message-1' %}";
+  </script>
 
   <!-- Load the JavaScript for the slider puzzle. -->
   <script src="{% static 'puzzles\js\sliderPuzzle.js' %}"></script>

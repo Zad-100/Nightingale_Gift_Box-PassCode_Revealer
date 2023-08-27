@@ -92,10 +92,33 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Function to check if puzzle is solved
     function isPuzzleSolved() {
-        return tiles.every(
+        if (tiles.every(
             (tile, index) => 
             tile.dataset.order == index + 1 || tile.classList.contains("blank")
-        );
+        )) {
+            // Add elements to the HTML to display the full picture
+            // Hide the board
+            document.querySelector(".board").style.display = "none";
+            // Hide the solve button
+            document.querySelector("#solve-button").style.display = "none";
+            // Create a div for the full picture element
+            const completeImage = document.createElement('div');
+            // Add class to style the image
+            completeImage.className = "complete-image";
+            // Append to the body
+            document.body.appendChild(completeImage);
+
+            // Add elements to the HTML to display a congratulatory message
+            const congrats = document.createElement('div');
+            congrats.innerHTML = "<h3>Are badhaaiiiii, you solved it!!! 🎉</h3>"
+            document.body.appendChild(congrats);
+
+
+            // Redirect to the message_1 page after 4 seconds
+            setTimeout(() => {
+                window.location.href = message_1_URL;
+            }, 4000);
+        }
     } // end function isPuzzleSolved()
 
     // Add an event listener to board to listen for tile clicks
@@ -112,9 +135,7 @@ document.addEventListener("DOMContentLoaded", function() {
             tiles = Array.from(board.children);
 
             // After every move, check if the puzzle is solved
-            if (isPuzzleSolved()) {
-                alert("Puzzle Solved!!!");
-            } // end if
+            isPuzzleSolved()
         } // end if
     }); // end EventListener
 

@@ -125,16 +125,16 @@ def category_form_view(request, form_category):
 
     # Map form_category to actual form class
     form_map = {
-        'colours-fashion': ColoursFashionForm,
-        'food-treats': FoodTreatsForm,
-        'entertainment': EntertainmentForm,
-        'music-songs': MusicSongsForm,
-        'personal-lifestyle': PersonalLifestyleForm,
-        'travel': TravelForm,
-        'memory-lane': RelationshipsSentimentsForm,
+        'colours-fashion': (ColoursFashionForm, "Colours and Fashion"),
+        'food-treats': (FoodTreatsForm, "Food and Treats"),
+        'entertainment': (EntertainmentForm, "Entertainment"),
+        'music-songs': (MusicSongsForm, "Music and Songs"),
+        'personal-lifestyle': (PersonalLifestyleForm, "Personal and Lifestyle"),
+        'travel': (TravelForm, "Travel"),
+        'memory-lane': (RelationshipsSentimentsForm, "Memories"),
     }
 
-    Form_Class = form_map.get(form_category)
+    Form_Class = form_map.get(form_category, None)[0]
     if not Form_Class:
         # Handle error - form type not found
         # Redirect or show an error page
@@ -170,7 +170,11 @@ def category_form_view(request, form_category):
         form = Form_Class()
     # end if-else
 
-    context = {'form': form}
+    category_name = form_map.get(form_category, None)[1]
+    context = {
+        'form': form,
+        'category_name': category_name,
+    }
     return render(request, 'puzzles/category_form.html', context)
 # end view dummy_form()
 

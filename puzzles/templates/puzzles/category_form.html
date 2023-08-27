@@ -10,6 +10,11 @@
 
 {% extends "puzzles/base.html" %}
 
+{% block title %}
+  <title>{{ category_name }}</title>
+{% endblock %}
+
+
 {% block content %}
   <h1>How much do you know about yourself?</h1>
   <p>Answer the following questions to get the second digit of your passcode.</p>
