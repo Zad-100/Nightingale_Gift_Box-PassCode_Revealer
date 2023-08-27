@@ -16,6 +16,8 @@ def index(request):
 # end view index()
 
 
+
+# ***********Slider Puzzle and its Message Page Views***********
 def slider_puzzle(request):
     """The slider puzzle page"""
     return render(request, 'puzzles/slider_puzzle.html')
@@ -28,6 +30,8 @@ def message_1(request):
 # end view message_1()
 
 
+
+# ***********Crossword Puzzle and its Message Pages Views***********
 def crossword_puzzle(request):
     """The crossword puzzle page"""
     return render(request, 'puzzles/crossword_puzzle.html')
@@ -40,6 +44,8 @@ def message_2(request):
 # end view message_2()
 
 
+
+# ***********Counterfiet Form abd its Message Page Views***********
 def dummy_form_main_view(request):
     """
     The dummy form page where Nightingale will select the category of
@@ -157,10 +163,8 @@ def category_form_view(request, form_category):
                 del request.session['selected_categories']
                 del request.session['curr_category_index']
 
-                # Redirect to message page that will ask her to enter
-                # the passcode
-                # return redirect('puzzles:passcode-check')
-                return redirect('puzzles:index')
+                # Redirect to third message page
+                return redirect('puzzles:message-3')
             # end if-else
     else:
         form = Form_Class()
@@ -171,6 +175,14 @@ def category_form_view(request, form_category):
 # end view dummy_form()
 
 
+def message_3(request):
+    """The message page after completing the dummy form successfully"""
+    return render(request, 'puzzles/message_3.html')
+# end view message_3()
+
+
+
+# ***********Passcode Check and Final Message Page Views***********
 def passcode_check(request):
     """Page to check if she's got the passcode right - right digits and order"""
 
@@ -234,6 +246,7 @@ def passcode_check(request):
 # end view passcode_check()
 
 
+# The very final page of the entire web app!!!
 def final_message(request):
     """The final message page"""
     return render(request, 'puzzles/final_message.html')

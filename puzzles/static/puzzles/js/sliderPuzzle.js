@@ -9,13 +9,52 @@ document.addEventListener("DOMContentLoaded", function() {
     // Get the blank tile element
     const blankTile = document.querySelector(".blank");
 
+
+    // The board should be solvable. So check for solvability and
+    // shuffle the board til it's solvable
+
+    // Function to count inversions in the tiles array passed in
+    // An inversion is when a tile precedes another tile with a lower number
+    function countInversions(tilesArray) {
+        // Initialise inversion count to 0
+        let inversions = 0;
+
+        // Loop through the tiles array
+        for (let i = 0; i < tilesArray.length; i++) {
+            // Loop through the tiles array again starting from the next tile
+            // after the current tile
+            for (let j = i + 1; j < tilesArray.length; j++) {
+                // If the current tile has a higher order than the next tile
+                // but a lower number, increment inversions
+                if (tilesArray[i] > tilesArray[j]) {
+                        inversions++;
+                } // end if
+            } // end for
+        } // end for
+
+        return inversions;
+    } // end function countInversions()
+
     // Function to shuffle the tiles in random order
     function shuffleTiles() {
-        // Randomly sort the tiles array
-        tiles.sort(() => 0.5 - Math.random());
+
+        // Loop until the board is solvable
+        let invCount;
+        do {
+            // Randomly sort the tiles array
+            tiles.sort(() => 0.5 - Math.random());
+
+            // Get the order of each tile in a 1D array
+            const tilesOrder = tiles.map(tile => parseInt(tile.dataset.order));
+            // Count the number of inversions in the tiles array
+            invCount = countInversions(tilesOrder);
+        } while (invCount % 2 !== 0); // end do-while
+        // // Randomly sort the tiles array
+        // tiles.sort(() => 0.5 - Math.random());
         
         // Append each tile to the board
         tiles.forEach(tile => board.appendChild(tile));
+        // alert(invCount)
     } // end function shuffleTiles()
 
     // Function to swap the position of the two tiles
@@ -78,6 +117,22 @@ document.addEventListener("DOMContentLoaded", function() {
             } // end if
         } // end if
     }); // end EventListener
+
+    // Add an event listener to the solve button to listen for clicks
+    document.querySelector("#solve-button").addEventListener("click",
+                                                              solvePuzzle);
+
+    // Function to solve the puzzle
+    function solvePuzzle() {
+        tiles.sort((a, b) => {
+            return a.dataset.order - b.dataset.order;
+        });
+
+        tiles.forEach(tile => board.appendChild(tile));
+
+        // Update the tiles list after sorting
+        tiles = Array.from(board.children);
+    } // end function solvePuzzle()
 
     shuffleTiles() // initialise board by shuffling tiles
 });

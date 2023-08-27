@@ -32,7 +32,11 @@
     <div class="tile" data-order="8" style="background-image: url({% static 'puzzles/images/slices/slice_8.png' %});"></div>
     <div class="tile blank" data-order="9" style="background-image: url({% static 'puzzles/images/slices/slice_moveme.png' %});"></div>
   </div>
+  
+  <!--Create a solve button for debugging-->
+  <button type="button" id="solve-button">Solve</button>
 
   <!-- Load the JavaScript for the slider puzzle. -->
-  <script src="{% static 'puzzles/js/sliderPuzzle.js' %}"></script>
+  <script src="{% static 'puzzles\js\sliderPuzzle.js' %}"></script>
+
 {% endblock %}

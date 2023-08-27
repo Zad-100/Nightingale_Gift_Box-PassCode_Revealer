@@ -31,6 +31,9 @@ urlpatterns = [
     path('how-much-do-you-know-yourself/<str:form_category>/',
         views.category_form_view, name='category-form-view'),
 
+    # Message 3 Page
+    path('message-3/', views.message_3, name='message-3'),
+
     # Page to verify the correct passcode
     path('passcode-check/', views.passcode_check, name='passcode-check'),
 
