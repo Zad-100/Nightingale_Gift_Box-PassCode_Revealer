@@ -1,3 +1,40 @@
+#tile-1 {
+    background-image: url('../images/slices/slice_1.png');
+}
+
+#tile-2 {
+    background-image: url('../images/slices/slice_2.png');
+}
+
+#tile-3 {
+    background-image: url('../images/slices/slice_3.png');
+}
+
+#tile-4 {
+    background-image: url('../images/slices/slice_4.png');
+}
+
+#tile-5 {
+    background-image: url('../images/slices/slice_5.png');
+}
+
+#tile-6 {
+    background-image: url('../images/slices/slice_6.png');
+}
+
+#tile-7 {
+    background-image: url('../images/slices/slice_7.png');
+}
+
+#tile-8 {
+    background-image: url('../images/slices/slice_8.png');
+}
+
+#tile-9 {
+    background-image: url('../images/slices/slice_moveme.png');
+}
+
+
 .complete-image {
     background-image: url('../images/Slider_Puzzle_Sexy_Pic_Edited.png');
     background-size: cover;
