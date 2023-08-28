@@ -11,17 +11,19 @@
 {% extends "puzzles/base.html" %}
 
 {% block title %}
-  <title>{{ category_name }}</title>
+  <title>Form: {{ category_name }}</title>
 {% endblock %}
 
 
 {% block content %}
-  <h1>How much do you know about yourself?</h1>
-  <p>Answer the following questions to get the second digit of your passcode.</p>
-
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Submit</button>
-  </form>
+  <h1>{{ category_name }}</h1>
+  <p>{{ category_instruct }}</p>
+  <br>
+  <p>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Submit</button>
+    </form>
+  </p>
 {% endblock %}

@@ -5,6 +5,7 @@ from .forms import ColoursFashionForm, FoodTreatsForm, EntertainmentForm
 from .forms import MusicSongsForm, PersonalLifestyleForm, TravelForm
 from .forms import RelationshipsSentimentsForm
 from .forms import PasscodeForm
+from .category_instructions import instructions_map
 
 PASSCODE = 123
 
@@ -135,6 +136,7 @@ def category_form_view(request, form_category):
     }
 
     Form_Class = form_map.get(form_category, None)[0]
+    category_instruct = instructions_map.get(form_category, None)
     if not Form_Class:
         # Handle error - form type not found
         # Redirect or show an error page
@@ -174,6 +176,7 @@ def category_form_view(request, form_category):
     context = {
         'form': form,
         'category_name': category_name,
+        'category_instruct': category_instruct,
     }
     return render(request, 'puzzles/category_form.html', context)
 # end view dummy_form()

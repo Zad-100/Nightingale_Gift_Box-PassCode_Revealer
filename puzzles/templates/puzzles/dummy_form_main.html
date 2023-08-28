@@ -46,11 +46,11 @@
   </p>
 
   <h3>Mandotory Categories:</h3>
-  <ul>
-    {% for name, question_count in mandatory_categories.items %}
+  {% for name, question_count in mandatory_categories.items %}
+    <ul>
       <li>{{ name }} ({{ question_count }} Questions)</li>
-    {% endfor %}
-  </ul>
+    </ul>
+  {% endfor %}
 
   <h3>Optional Categories:</h3>
   <form method="post">
