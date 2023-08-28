@@ -34,6 +34,16 @@
     background-image: url('../images/slices/slice_moveme.png');
 }
 
+.tile-number {
+    display: none; /* Hide the tile number initially */
+    width: 100%;
+    height: 100%;
+    font-size: 1.5em;
+    color: white;
+    text-align: -webkit-center;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
 
 .complete-image {
     background-image: url('../images/Slider_Puzzle_Sexy_Pic_Edited.png');

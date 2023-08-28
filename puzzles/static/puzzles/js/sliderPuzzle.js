@@ -9,6 +9,9 @@ document.addEventListener("DOMContentLoaded", function() {
     // Get the blank tile element
     const blankTile = document.querySelector(".blank");
 
+    // Initialise the "show numbers" boolean as false
+    let showNumbers = false; 
+
 
     // The board should be solvable. So check for solvability and
     // shuffle the board til it's solvable
@@ -101,6 +104,8 @@ document.addEventListener("DOMContentLoaded", function() {
             document.querySelector(".board").style.display = "none";
             // Hide the solve button
             document.querySelector("#solve-button").style.display = "none";
+            // Hide the show-numbers button
+            document.querySelector("#show-numbers-button").style.display = "none";
             // Create a div for the full picture element
             const completeImage = document.createElement('div');
             // Add class to style the image
@@ -139,6 +144,7 @@ document.addEventListener("DOMContentLoaded", function() {
         } // end if
     }); // end EventListener
 
+
     // Add an event listener to the solve button to listen for clicks
     document.querySelector("#solve-button").addEventListener("click",
                                                               solvePuzzle);
@@ -156,4 +162,25 @@ document.addEventListener("DOMContentLoaded", function() {
     } // end function solvePuzzle()
 
     shuffleTiles() // initialise board by shuffling tiles
+
+
+    // Add an event listener to the show numbers button to listen for clicks
+    document.getElementById("show-numbers-button").addEventListener("click",
+                                                    function() {
+        // Toggle the showNumbers boolean
+        showNumbers = !showNumbers;
+        // Call the function to show/hide the numbers
+        updateNumberOverlay();
+    }); // end EventListener
+
+    function updateNumberOverlay() {
+        const numberElements = document.querySelectorAll('.tile-number');
+        numberElements.forEach(element => {
+            if (showNumbers) {
+                element.style.display = "block";
+            } else {
+                element.style.display = "none";
+            }
+        }); // end forEach
+    } // end function updateNumberOverlay()
 });
