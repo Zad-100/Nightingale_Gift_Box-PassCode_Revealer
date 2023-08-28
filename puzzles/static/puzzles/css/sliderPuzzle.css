@@ -35,12 +35,17 @@
 }
 
 .tile-number {
+    /* After toggling the show-numbers-button, the display is set to "block"
+    and that blocks any tile-clicks from getting through to the tiles. To
+    get around this issue, simply uncomment the below line */
+    /* pointer-events: none; */
     display: none; /* Hide the tile number initially */
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 100%;
     font-size: 1.5em;
     color: white;
-    text-align: -webkit-center;
     background-color: rgba(0, 0, 0, 0.3);
 }
 

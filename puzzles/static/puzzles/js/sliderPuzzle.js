@@ -177,7 +177,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const numberElements = document.querySelectorAll('.tile-number');
         numberElements.forEach(element => {
             if (showNumbers) {
-                element.style.display = "block";
+                element.style.display = "flex";
             } else {
                 element.style.display = "none";
             }
