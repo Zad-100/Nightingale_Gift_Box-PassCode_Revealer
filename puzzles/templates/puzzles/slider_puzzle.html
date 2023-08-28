@@ -36,33 +36,43 @@
     the <i>Move Me</i> tile.
   </p>
 
-  <div class="board" id="sliderPuzzleContainer">
-    <!-- The slider puzzle grid will be rendered here via JavaScript -->
-    <div class="tile" data-order="1" id="tile-1">
-      <span class="tile-number">1</span>
+  <div id="game-container">
+
+    <!--Original playing board-->
+    <div class="board" id="sliderPuzzleContainer">
+      <!-- The slider puzzle grid will be rendered here via JavaScript -->
+      <div class="tile" data-order="1" id="tile-1">
+        <span class="tile-number">1</span>
+      </div>
+      <div class="tile" data-order="2" id="tile-2">
+        <span class="tile-number">2</span>
+      </div>
+      <div class="tile" data-order="3" id="tile-3">
+        <span class="tile-number">3</span>
+      </div>
+      <div class="tile" data-order="4" id="tile-4">
+        <span class="tile-number">4</span>
+      </div>
+      <div class="tile" data-order="5" id="tile-5">
+        <span class="tile-number">5</span>
+      </div>
+      <div class="tile" data-order="6" id="tile-6">
+        <span class="tile-number">6</span>
+      </div>
+      <div class="tile" data-order="7" id="tile-7">
+        <span class="tile-number">7</span>
+      </div>
+      <div class="tile" data-order="8" id="tile-8">
+        <span class="tile-number">8</span>
+      </div>
+      <div class="tile blank" data-order="9" id="tile-9"></div>
     </div>
-    <div class="tile" data-order="2" id="tile-2">
-      <span class="tile-number">2</span>
+
+    <!--Ghost Image for overlaying on the original playing board-->
+    <div id="ghost-img-container">
+      <img id="ghost-img" src="{% static 'puzzles/images/Slider_Puzzle_Sexy_Pic_Edited.png' %}" alt="Ghost Image">
     </div>
-    <div class="tile" data-order="3" id="tile-3">
-      <span class="tile-number">3</span>
-    </div>
-    <div class="tile" data-order="4" id="tile-4">
-      <span class="tile-number">4</span>
-    </div>
-    <div class="tile" data-order="5" id="tile-5">
-      <span class="tile-number">5</span>
-    </div>
-    <div class="tile" data-order="6" id="tile-6">
-      <span class="tile-number">6</span>
-    </div>
-    <div class="tile" data-order="7" id="tile-7">
-      <span class="tile-number">7</span>
-    </div>
-    <div class="tile" data-order="8" id="tile-8">
-      <span class="tile-number">8</span>
-    </div>
-    <div class="tile blank" data-order="9" id="tile-9"></div>
+    
   </div>
   
   <!--Create a button which toggles the tile numbers-->
@@ -76,6 +86,13 @@
   <p>
     <button type="button" id="solve-button">Solve</button>
   </p>
+
+
+  <!--Create a button which toggles the ghost image-->
+  <p>
+    <button type="button" id="show-ghost-img-button">
+      Show Ghost Image
+    </button>
 
   <!--Define the redirect variable for JavaScript-->
   <script>

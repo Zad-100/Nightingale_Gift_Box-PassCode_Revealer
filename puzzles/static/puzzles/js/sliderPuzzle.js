@@ -1,5 +1,7 @@
 // Start the script when the content of the document is fully loaded
 document.addEventListener("DOMContentLoaded", function() {
+
+    // ******************Making the Board Work******************
     // Get the board element where all the tiles are contained
     const board = document.querySelector(".board");
 
@@ -99,13 +101,18 @@ document.addEventListener("DOMContentLoaded", function() {
             (tile, index) => 
             tile.dataset.order == index + 1 || tile.classList.contains("blank")
         )) {
+            // ************If solved, hide the rest elements************
             // Add elements to the HTML to display the full picture
-            // Hide the board
-            document.querySelector(".board").style.display = "none";
+            // Hide the entire game container
+            document.querySelector("#game-container").style.display = "none";
+            // // Hide the board
+            // document.querySelector(".board").style.display = "none";
             // Hide the solve button
             document.querySelector("#solve-button").style.display = "none";
             // Hide the show-numbers button
             document.querySelector("#show-numbers-button").style.display = "none";
+            // Hide the show-ghost-img-button
+            document.querySelector("#show-ghost-img-button").style.display = "none";
             // Create a div for the full picture element
             const completeImage = document.createElement('div');
             // Add class to style the image
@@ -126,6 +133,8 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     } // end function isPuzzleSolved()
 
+
+    // ******************Solve the Puzzle (Rearrange)******************
     // Add an event listener to board to listen for tile clicks
     board.addEventListener("click", function(event) {
         const tile = event.target; // tile that was clicked
@@ -164,6 +173,7 @@ document.addEventListener("DOMContentLoaded", function() {
     shuffleTiles() // initialise board by shuffling tiles
 
 
+    // ******************Show Numbers Hint System******************
     // Add an event listener to the show numbers button to listen for clicks
     document.getElementById("show-numbers-button").addEventListener("click",
                                                     function() {
@@ -183,4 +193,35 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }); // end forEach
     } // end function updateNumberOverlay()
+
+    // ******************Ghost Image******************
+    // Select the ghost image container and the button
+    const ghostImgContainer = document.getElementById("ghost-img-container");
+    const showGhostImgButton = document.getElementById("show-ghost-img-button");
+
+    function showGhost() {
+        ghostImgContainer.style.visibility = "visible";
+        ghostImgContainer.style.zIndex = "1";
+    } // end function showGhost()
+    
+    function hideGhost() {
+        ghostImgContainer.style.visibility = "hidden";
+        ghostImgContainer.style.zIndex = "-1";
+    } // end function hideGhost()
+
+    // Desktop Events
+    showGhostImgButton.addEventListener("mousedown", showGhost);
+    showGhostImgButton.addEventListener("mouseup", hideGhost);
+    showGhostImgButton.addEventListener("mouseleave", hideGhost);
+
+    // Mobile Events
+    showGhostImgButton.addEventListener("touchstart", function(event) {
+        event.preventDefault();  // Prevent default actions like text selection
+        showGhost();
+    }); // end EventListener
+
+    showGhostImgButton.addEventListener("touchend", function(event) {
+        event.preventDefault();  // Prevent default actions like context menu
+        hideGhost();
+    }); // end EventListener
 });

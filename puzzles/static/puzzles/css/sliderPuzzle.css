@@ -1,3 +1,4 @@
+/* Board Styles */
 #tile-1 {
     background-image: url('../images/slices/slice_1.png');
 }
@@ -34,38 +35,12 @@
     background-image: url('../images/slices/slice_moveme.png');
 }
 
-.tile-number {
-    /* After toggling the show-numbers-button, the display is set to "block"
-    and that blocks any tile-clicks from getting through to the tiles. To
-    get around this issue, simply uncomment the below line */
-    /* pointer-events: none; */
-    display: none; /* Hide the tile number initially */
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    font-size: 1.5em;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.3);
-}
-
-
-.complete-image {
-    background-image: url('../images/Slider_Puzzle_Sexy_Pic_Edited.png');
-    background-size: cover;
+#game-container {
+    position: relative;
     width: 366px;
     height: 366px;
-    position: relative;
     margin: auto;
 }
-
-
-h3 {
-    text-align: center;
-    font-size: 2em;
-    color: black;
-}
-
 
 .board {
     display: grid;
@@ -87,4 +62,57 @@ h3 {
 
 .tile.blank {
     cursor: default; /* So the blank tile doesn't look clickable */
+}
+
+
+/* Show Numbers Styles */
+.tile-number {
+    /* After toggling the show-numbers-button, the display is set to "block"
+    and that blocks any tile-clicks from getting through to the tiles. To
+    get around this issue, simply uncomment the below line */
+    /* pointer-events: none; */
+    display: none; /* Hide the tile number initially */
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-size: 1.5em;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+
+/* Ghost Image Styles */
+#ghost-img-container {
+    visibility: hidden; /* Hide the ghost image initially */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 364px;
+    height: 364px;
+    /* margin: auto; */
+}
+
+#ghost-img {
+    width: 100%;
+    height: 100%;
+    opacity: 0.6; /* Make the image semi-transparent */
+}
+
+
+/* After Solving Styles */
+.complete-image {
+    background-image: url('../images/Slider_Puzzle_Sexy_Pic_Edited.png');
+    background-size: cover;
+    width: 366px;
+    height: 366px;
+    position: relative;
+    margin: auto;
+}
+
+
+h3 {
+    text-align: center;
+    font-size: 2em;
+    color: black;
 }
