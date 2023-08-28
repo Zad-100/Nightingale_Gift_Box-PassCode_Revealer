@@ -34,6 +34,9 @@ INSTALLED_APPS = [
     # My apps
     'puzzles',
 
+    # Third Party Apps
+    'bootstrap4',
+
     # Default django apps
     'django.contrib.admin',
     'django.contrib.auth',

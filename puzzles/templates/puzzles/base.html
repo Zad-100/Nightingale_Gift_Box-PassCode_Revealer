@@ -3,6 +3,8 @@
   It contains the header and the content block.
 -->
 
+{% load bootstrap4 %}
+
 <!--Load the static files of top-level (for the entire project)-->
 {% load static %}
 
@@ -35,6 +37,19 @@
     <!-- Web manifest for progressive web apps -->
     <link rel="manifest" href="{% static 'icons/site.webmanifest' %}">
 
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue&family=Indie+Flower&family=Itim&family=Kalam&family=La+Belle+Aurore&display=swap" rel="stylesheet">
+
+
+    <!--Bootstrap CSS and JS-->
+    {% bootstrap_css %}
+    {% bootstrap_javascript jquery='full' %}
+    
+    <!--Custom CSS-->
+    <link rel="stylesheet" href="{% static 'puzzles/css/base.css' %}">
+
     {% block extracss %}
     {% endblock %}
   </head>
@@ -43,7 +58,9 @@
     <!-- Header -->
     <header>
       <!-- Link to Home Page -->
-      <a href="{% url 'puzzles:index' %}">Home</a>
+      <a href="{% url 'puzzles:index' %}">
+        Nightingale's Passcode Revealer
+      </a>
     </header>
 
     <!-- Body Content Block -->

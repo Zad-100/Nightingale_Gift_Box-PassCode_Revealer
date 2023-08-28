@@ -1,0 +1,45 @@
+h1, h2, h3 {
+    font-family: 'Indie Flower', cursive;
+}
+
+body {
+    background-color: #FAF3DD;
+    font-family: 'Itim', cursive;
+}
+
+header {
+    font-family: 'Comic Neue', cursive;
+    background-color: #FF61A6; /* Bright Pink */
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 2em;
+    border-bottom: 5px dotted white; /* Dotted Border like a ribbon */
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+}
+
+main {
+    padding: 20px;
+    border-radius: 15px; /* Rounded Corners */
+    background-color: #FFFFFF; /* White Background */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Gentle Shadow */
+}
+
+button {
+    background-color: #FF61A6; /* Bright Pink */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 12px; /* Rounded Corners */
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Gentle transition */
+}
+
+button:hover {
+    background-color: #FFAAA5; /* Lighter Pink on Hover */
+}
