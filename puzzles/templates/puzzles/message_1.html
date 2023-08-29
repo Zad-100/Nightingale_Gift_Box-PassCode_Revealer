@@ -19,48 +19,63 @@
 
 
 {% block content %}
-  <h1>🎖 Congratulazioni!!! 🎖</h1>
-  <h5>Risolvere il primo degli enigmi di questa serie di enigmi! 🌚</h5>
-  <p>
-    Bhaiiii, slider puzzle mre se toh naa ho paataa but you pulled it off!!!
-    Just wow! 🙇🏻‍♂️ I guess, <i>Tantrikk Vidyaaen</i> aapki baut kaam
-    aa rhin. 🤣
-  </p>
-  <p>
-    Now, you have earned one of the three digits of your passcode! 🌟
-    The first digit you get is <strong>1</strong>.
-  </p>
-  <p>
-    So, this was the photu I used for making the slider puzzle: <br>
-    <img id="sldrPic" src="{% static 'puzzles/images/Slider_Puzzle_Sexy_Pic_Edited.png' %}" alt="First Pic You Ever Shared With Me"> <br>
+  <h1 class="d-flex justify-content-center align-items-center">
+    🎖 Congratulazioni 🎖
+  </h1>
+  <h5 class="d-flex justify-content-center align-items-center">
+    Risolvere il primo degli enigmi di questa serie di enigmi! 🌚
+  </h5>
 
-    Tujhe yaad hai kyaa yeh photu ke baare??? 🌚
+  <br>
 
-    <button type="button" id="showMessageButton">Click to Remember</button>
-    <div id="hiddenMessage">
-      <p>
-        This was the very first pic that you ever shared with me (and that was
-        over mail, lol, coz mko baut pasand aai thi and I needed full HD.
-        <s>kyaa mtlb 1080p mai chaahiye thaa 😈</s>).
-        You would think why that means so much to me.
-        Well, that somehow gave me the confidence that you trust me and em
-        a good man, girls can trust themselves with. 🤷🏻‍♂️ (lol, after that
-        strikethrough comment, I wrote that line. IRONY. Baut gandaa aadmi hun
-        yaar mai...)
-      </p>
-    </div>
+  <div id="message">
+    <p>
+      Bhaiiii, slider puzzle mre se toh naa ho paataa but you pulled it off!!!
+      Just wow! 🙇🏻‍♂️ I guess, <i>Taantrikk Vidyaaen</i> aapki baut kaam
+      aa rhin. 🤣
+    </p>
+    <p>
+      Now, you have earned one of the three digits of your passcode! 🌟
+      The first digit you get is <strong>1</strong>.
+    </p>
+    <p>
+      So, this was the photu I used for making the slider puzzle: <br>
+      <div class="d-flex justify-content-center align-items-center">
+        <img id="sldrPic" src="{% static 'puzzles/images/Slider_Puzzle_Sexy_Pic_Edited.png' %}" alt="First Pic You Ever Shared With Me"> <br>
+      </div>
+  
+      <br>
+      Tujhe yaad hai kyaa yeh photu ke baare??? 🌚
+  
+      <button type="button" id="showMessageButton">Tap to Remember</button>
+      <div id="hiddenMessage">
+        <p>
+          This was the very first pic that you ever shared with me (and that was
+          over mail, lol, coz mko baut pasand aai thi and I needed full HD.
+          <s>kyaa mtlb 1080p mai chaahiye thaa 😈</s>).
+          You would think why that means so much to me.
+          Well, that somehow gave me the confidence that you trust me and em
+          a good man, girls can trust themselves with. 🤷🏻‍♂️ (lol, after that
+          strikethrough comment, I wrote that line. IRONY. Baut gandaa aadmi hun
+          yaar mai...)
+        </p>
+      </div>
+    </p>
+  </div>
+  
+  <br>
+  <br>
 
-    <!--Load the javascript file-->
-    <script src="{% static 'puzzles/js/message_1_message_revealer.js' %}"></script>
-  </p>
-
-  <p>
+  <p class="d-flex justify-content-center align-items-center">
     Anyway, ready for the next puzzle?? Just hit the button below to
     get started with the next puzzle!
   </p>
-  <p>
+  <p class="d-flex justify-content-center align-items-center">
     <a href="{% url 'puzzles:crossword-puzzle' %}">
       <button type="button">Next Puzzle</button>
     </a>
   </p>
-{% endblock %}
+
+  <!--Load the javascript file-->
+  <script src="{% static 'puzzles/js/message_1_message_revealer.js' %}"></script>
+  {% endblock %}

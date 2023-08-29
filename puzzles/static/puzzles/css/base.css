@@ -1,19 +1,29 @@
+/* Content Styles */
 h1, h2, h3 {
     font-family: 'Indie Flower', cursive;
+}
+
+h1 {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 body {
     background-color: #FAF3DD;
     font-family: 'Itim', cursive;
+    font-size: 1.5em;
 }
 
 header {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     font-family: 'Comic Neue', cursive;
     background-color: #FF61A6; /* Bright Pink */
     color: white;
     text-align: center;
     padding: 10px;
-    font-size: 2em;
+    font-size: 1em;
     border-bottom: 5px dotted white; /* Dotted Border like a ribbon */
 }
 
@@ -29,6 +39,14 @@ main {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Gentle Shadow */
 }
 
+/* Message Styles (for content in message pages: message-1 to 3 and final-message) */
+#message {
+    font-family: 'La Belle Aurore', cursive;
+    font-size: 1em;
+    margin: 5px 5px;
+}
+
+/* Button Styles */
 button {
     background-color: #FF61A6; /* Bright Pink */
     color: white;
@@ -42,4 +60,51 @@ button {
 
 button:hover {
     background-color: #FFAAA5; /* Lighter Pink on Hover */
+}
+
+/* Media queries for mobile optimisation */
+@media screen and (max-width: 768px) {
+    header {
+        font-size: 1em;
+        padding: 8px;
+    }
+    
+    main {
+        padding: 15px;
+    }
+    
+    button {
+        font-size: 0.9em;
+        padding: 8px 16px;
+    }
+    #message {
+        font-family: 'La Belle Aurore', cursive;
+        font-size: 1em;
+        margin: 5px 5px;
+    }
+}
+
+/* Media queries specifically for iPhone 13 */
+@media only screen
+and (device-width : 390px)
+and (device-height : 844px)
+and (-webkit-device-pixel-ratio : 3) {
+    header {
+        font-size: 1em;
+        padding: 8px;
+    }
+    
+    main {
+        padding: 15px;
+    }
+    
+    button {
+        font-size: 0.9em;
+        padding: 8px 16px;
+    }
+    #message {
+        font-family: 'La Belle Aurore', cursive;
+        font-size: 1em;
+        margin: 5px 5px;
+    }
 }

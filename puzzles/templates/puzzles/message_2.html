@@ -16,47 +16,62 @@
 {% endblock %}
 
 
-<!-- {% block extracss %}
-  <link rel="stylesheet" href="{% static 'puzzles/css/message_2_message_revealer.css' %}">
-{% endblock %} -->
+{% block extracss %}
+  <link rel="stylesheet" href="{% static 'puzzles/css/message_2.css' %}">
+{% endblock %}
 
 
 {% block content %}
-  <h1>🎊 축하해요 🎊</h1>
-  <h1>(chughahaeyo!!)</h1>
-  <h5>퍼즐 시리즈의 두 번째 부분을 완료하면! 👏🏻</h5>
-  <h5>(peojeul silijeuui du beonjjae bubun-eul wanlyohamyeon!)</h5>
+  <h1 class="d-flex justify-content-center align-items-center" id="message-2-heading-i">
+    🎊 축하해요 🎊
+  </h1>
+  <h1 class="d-flex justify-content-center align-items-center">
+    (chughahaeyo!!)
+  </h1>
+  <h5 class="d-flex justify-content-center align-items-center">
+    퍼즐 시리즈의 두 번째 부분을 완료하면! 👏🏻
+  </h5>
+  <h5 class="d-flex justify-content-center align-items-center">
+    (peojeul silijeuui du beonjjae bubun-eul wanlyohamyeon!)
+  </h5>
 
-  <p>
-    Crossword v successfully done, girl you on fire! 🔥 Em sure it wasn't
-    a cake walk for you. Or was it? 😏
-  </p>
-  <p>
-    Thus, you have earned the second one of the digits of your passcode! 🌟🌟  
-    The second digit you get is <strong>2</strong>.
-  </p>
+  <br>
 
-  <p>
-    I really really hope yaar ki this crossword made you smile somehow 🤞🏻🥺
-    and rekindled some of the cutest, funniest, and most memorable moments of
-    your life. Em assuming ki you had as much fun solving this crossword as I
-    had creating it for you. Like, honestly, I had a blast creating
-    this crossword specially the clues. 😌 Of course, I was helped quite a
-    bit by GPT 4 with the riddles building part. 🤖
-  </p>
-  <p>
-    While I was framing those questions so many of those conversations and
-    memories came rushing back to me. I was literally laughing out loud 🤣 and
-    (crying too, may be 👉🏻👈🏻) clutching my stomach for some.
-    Tujhe v waisaa he feel huaa ho yehi mri aashaa hai 🥺💖
-  </p>
+  <div id="message">
+    <p>
+      Crossword v successfully done, girl you on fire! 🔥 Em sure it wasn't
+      a cake walk for you. Or was it? 😏
+    </p>
+    <p>
+      Thus, you have earned the second one of the digits of your passcode! 🌟🌟  
+      The second digit you get is <strong>2</strong>.
+    </p>
+  
+    <p>
+      I really really hope yaar ki this crossword made you smile somehow 🤞🏻🥺
+      and rekindled some of the cutest, funniest, and most memorable moments of
+      your life. Em assuming ki you had as much fun solving this crossword as I
+      had creating it for you. Like, honestly, I had a blast creating
+      this crossword specially the clues. 😌 Of course, I was helped quite a
+      bit by GPT 4 with the riddles building part. 🤖
+    </p>
+    <p>
+      While I was framing those questions so many of those conversations and
+      memories came rushing back to me. I was literally laughing out loud 🤣 and
+      (crying too, may be 👉🏻👈🏻) clutching my stomach for some.
+      Tujhe v waisaa he feel huaa ho yehi mri aashaa hai 🥺💖
+    </p>
+  </div>
 
-  <p>
+  <br>
+  <br>
+
+  <p class="d-flex justify-content-center align-items-center">
     Now, it's time for the third puzzle to get you the third digit of the
     passcode. This one is a bit tricky, you will see why. 😈 Whenever you are
     ready, click on the button below to proceed to the next puzzle.
   </p>
-  <p>
+  <p class="d-flex justify-content-center align-items-center">
     <a href="{% url 'puzzles:dummy-form-main' %}">
       <button type="button">Next Puzzle</button>
     </a>

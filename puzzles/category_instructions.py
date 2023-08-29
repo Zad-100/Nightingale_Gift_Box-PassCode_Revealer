@@ -40,7 +40,7 @@ score ko... I dunno, em just saying. 🤷‍♀️ Ready steady pooooooo! 🏁
 music_and_songs_instruct = """
 Hoping that your life also grooves like your favourite tracks forever, 🎶 \
 and you flow with the rhythm of life, let's see how you do in this section. \
-🎵🎶🎵🎶🎵🎶🎵🎶🎵🎶🎵🎶🎵🎶🎵🎶🎵 Don't forget to whistle or hum \
+🎵🎶🎵🎶🎵🎶🎵🎶🎵🎶🎵 Don't forget to whistle or hum \
 that song while you are answering. 🌚
 """
 
