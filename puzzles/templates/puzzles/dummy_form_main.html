@@ -15,49 +15,78 @@
 
 {% extends "puzzles/base.html" %}
 
+{% load static %}
+
+{% load bootstrap4 %}
+
 
 {% block title %}
   <title>Know Yourself Form</title>
 {% endblock %}
 
 
+{% block extracss %}
+  <link rel="stylesheet" href="{% static 'puzzles/css/dummy_form_main.css' %}">
+{% endblock %}
+
+
 {% block content %}
-  <h1>How Much Do You Know About Yourself???</h1>
+  <h1 class="d-flex justify-content-center align-items-center">
+    How Much Do You Know About Yourself?
+  </h1>
   <p>
     We happen to know more about you than you do yourself and hence, this test!
   </p>
-  <p>
-    There are a set of questions that you need to answer. The questions are
-    divided into various categories like colours and fashion, food, etc. Some
-    of them are mandatory to answer and some are optional. You can choose which
-    category you want to answer questions from among the optional ones. Each
-    question carries some hidden weight. The sum of the weights of the
-    questions you answer correctly will be the overall score. "How should I
-    match my answers to the answers in the answer key exactly?", you ask? Well,
-    we have an algorithm and ChatGPT 4 in place to take care of that. So, don't
-    worry about it. Just answer the questions as honestly as you can and in
-    any way you see fit to answer that question.
-  </p>
-  <p>
-    Below is the structure of the form. The categories are listed along with
-    the number of questions in them. The required ones are shown as a list
-    and the optional ones are shown as radio buttons. You can select the
-    optional ones you want to answer questions from.
-  </p>
 
-  <h3>Mandotory Categories:</h3>
-  {% for name, question_count in mandatory_categories.items %}
-    <ul>
-      <li>{{ name }} ({{ question_count }} Questions)</li>
-    </ul>
-  {% endfor %}
+  <div class="jumbotron lead">
+    <h4 id="instructions">
+      <b>Instructions</b>
+    </h4>
+    <p>
+      ⚠ There are a set of questions that you need to answer. The questions are
+      divided into various categories like colours and fashion, food, etc.
+    </p>
+    <p>
+      ☝🏻 Some of them are mandatory to answer and some are optional. You can
+      choose which category you want to answer questions from among the
+      optional ones.
+    </p>
+    <p>
+      ☝🏻 Each question carries some hidden weight. The sum of the weights of the
+      questions you answer correctly will be the overall score.
+    </p>
+    <p>
+      😏 "How would you match my answers to the answers in the answer key
+      exactly?", you ask? Well, we have an algorithm and ChatGPT 4 in place
+      to take care of that. So, don't worry about it. Just answer the questions
+      as honestly as you can and in any way you see fit to answer that question.
+    </p>
+    <p>
+      👇🏻 Below is the structure of the form. The categories are listed along with
+      the number of questions in them. The required ones are shown as a list
+      and the optional ones are shown as radio buttons. 
+    </p>
+    <p>
+      💡 You can select the optional ones you want to answer questions from.
+    </p>
+  </div>
 
-  <h3>Optional Categories:</h3>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Submit</button>
-  </form>
+
+  <div>
+    <h3>Mandotory Categories:</h3>
+    {% for name, question_count in mandatory_categories.items %}
+      <ul>
+        <li>{{ name }} ({{ question_count }} Questions)</li>
+      </ul>
+    {% endfor %}
+  
+    <h3>Optional Categories:</h3>
+    <form method="post" class="form">
+      {% csrf_token %}
+      {% bootstrap_form form %}
+      <button type="submit">Submit</button>
+    </form>
+  </div>
 
 
 {% endblock %}

@@ -10,20 +10,32 @@
 
 {% extends "puzzles/base.html" %}
 
+{% load static %}
+
+{% load bootstrap4 %}
+
+
 {% block title %}
   <title>Form: {{ category_name }}</title>
 {% endblock %}
 
 
 {% block content %}
-  <h1>{{ category_name }}</h1>
-  <p>{{ category_instruct }}</p>
+  <h2 class="d-flex justify-content-center align-items-center">
+    {{ category_name }}
+  </h2>
+  <div class="jumbotron lead">
+    <p>{{ category_instruct }}</p>
+  </div>
   <br>
   <p>
-    <form method="post">
+    <form method="post" class="form">
       {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit">Submit</button>
+      {% bootstrap_form form %}
+      <br>
+      <p>
+        <button type="submit">Submit</button>
+      </p>
     </form>
   </p>
 {% endblock %}

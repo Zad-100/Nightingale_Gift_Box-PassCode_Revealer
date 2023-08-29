@@ -18,15 +18,76 @@
 
 
 {% block extracss %}
-<link rel="stylesheet" href="{% static 'puzzles/css/crosswordPuzzle.css' %}">
+<link rel="stylesheet" href="{% static 'puzzles/css/crossword_puzzle.css' %}">
 {% endblock %}
 
 {% block content %}
-  <h1>Welcome to the Crossword Puzzle!</h1>
-  <p>Solve this puzzle to get the next digit of the lock</p>
+  <h1 class="d-flex justify-content-center align-items-center">
+    Welcome to the Crossword Puzzle!
+  </h1>
+  <p>
+    This is the second of the puzzles of the series!! Continuing the
+    momentum from the slider puzzle, this puzzle is a crossword puzzle - Enough
+    with the pictures! 😅
+  </p>
+  <p>
+    (Note: This crossword isn't exactly "coded" by me. I used an online tool to
+    generate the crossword puzzle. The tool is called
+    <a href="https://crosswordlabs.com">"Crossword Labs"</a>
+    and it generated a link to the crossword that I embedded in this page. I 
+    simply gave it the questions and their answers and set the orientation
+    stuff 🙂)
+  </p>
+  
+  <br>
+  
+  <div class="jumbotron lead">
+    <h4 id="instructions">
+      <b>Instructions</b>
+    </h4>
+    
+    <p>
+      ⚠ So, like any crossword puzzle, you have to fill in the words using the
+      clues given for both 'across' and 'down'. The words are not
+      case-sensitive. So, you can enter the words in any case you want.
+    </p>
+    <p>
+      ☝🏻 Just tap on the grid box that you want to put a letter into.
+    </p>
+    <p>
+      ☝🏻 After you have entered the whole word, hit enter to register the word
+      and move on to the next word.
+    </p>
+    <p>
+      ☝🏻 When you hit enter, if the word is correct, it will be coloured green,
+      else, it will be coloured red, so you know when you have guessed the
+      word wrong.
+    </p>
+    <p>
+      ☝🏻 You can increase the size of the clues window by simply dragging the
+      top of the window upwards.
+    </p>
+    <p>
+      ☝🏻 You can also go to a word from its clue. Simply tap on the clue to go
+      to the word in the grid and start filling it up *That's what she said*
+    </p>
 
+    <br>
 
-  <div class="crossword-container">
-    <iframe title="NG-BDay-CW" class="crossword-iframe" frameborder="0" src="https://crosswordlabs.com/embed/nightingales-birthday-crossword"></iframe>
+    <p>You go, girl! ✨</p>
   </div>
+
+  <br>
+
+
+  <div class="crossword-container d-flex justify-content-center align-items-center">
+    <iframe title="NG-BDay-CW" class="crossword-iframe" frameborder="10" src="https://crosswordlabs.com/embed/nightingales-birthday-crossword"></iframe>
+  </div>
+
+  <br>
+  <br>
+  <br>
+
+  <!-- Load the JavaScript for the slider puzzle. -->
+  <script src="{% static 'puzzles\js\crossword_puzzle.js' %}"></script>
 {% endblock %}

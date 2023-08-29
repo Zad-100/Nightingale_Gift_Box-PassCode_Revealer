@@ -14,13 +14,21 @@
 {% load static %}
 
 
+{% load bootstrap4 %}
+
+
 {% block title %}
   <title>Passcode Checkpoint</title>
 {% endblock %}
 
 
 {% block content %}
-  <h1>Passcode Checkpoint!</h1>
+  <h1 class="d-flex justify-content-center align-items-center">
+    Passcode Checkpoint!
+  </h1>
+
+  <br>
+
   <p>
     First things first: Congratulations on completing all the puzzles! You're
     really the infamous <i>Taantrikk</i> that people say you are!!! 🥳🎉🙌🏻
@@ -29,62 +37,75 @@
     you got the digits is the right order. 🌚
   </p>
 
-  <p>
-    So, you have three attempts to guess the right order of the digits. If you
-    get it right at any point, you'll be redirected to the final message page.
-    However, if your attempts are over, you'll be redirected to the final
-    message page, anyway. 🤷🏻‍♂️ <b>After being shown the correct pascode!</b> 😏
-    <i>
-      (don't you tell me you hadn't almost thrown your iPhone away thinking -
-      "SHIT!, MORE PUZZLEESSSS!!???" Okee, not thinking, may be screaming,
-      actually. And swearing at me. Who knows?
-    </i>
-    🤔<i>)</i>
-  </p>
+  <div class="jumbotron lead">
+    <p>
+      So, you have three attempts to guess the right order of the digits. If you
+      get it right at any point, you'll be redirected to the final message page.
+      However, if your attempts are over, you'll be redirected to the final
+      message page, anyway. 🤷🏻‍♂️ <b>After being shown the correct pascode!</b> 😏
+      <i>
+        (don't you tell me you hadn't almost thrown your iPhone away thinking -
+        "SHIT!, MORE PUZZLEESSSS!!???" Okee, not thinking, may be screaming,
+        actually. And swearing at me. Who knows?
+      </i>
+      🤔<i>)</i>
+    </p>
+  </div>
 
   <br>
   <br>
 
   {% if passcode_verified is None %}
-    <form method="post">
+    <form method="post" class="form">
       {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit">Submit</button>
+      {% bootstrap_form form %}
+      <p>
+        <button type="submit">Submit</button>
+      </p>
     </form>
-    <p>You have {{ attempts_left }} attempts left...</p>
+    <br>
+    <div class="jumbotron lead">
+      You have {{ attempts_left }} attempts left...
+    </div>
   {% elif passcode_verified %}
     <p>
       That's my <i>Taantrikk</i>, naa!!! 🎊 You got it right!!!
     </p>
-    <p>Passcode is indeed <b>123</b></p>
-    <p>
-      Now, you shall be automatically redirected to the final message page in
-      some time, please wait...
-    </p>
-
+    <div class="blockquote">
+      <p>Passcode is indeed <b>123</b></p>
+    </div>
+    <div class="d-flex justify-content-center align-items-center">
+      <p>
+        Now, you shall be automatically redirected to the final message page in
+        some time, please wait...
+      </p>
+    </div>
+    
     {% if show_redirect_script %}
-      <script>
+    <script>
         // Inline JavaScript just for the URL generation
         var finalMessageURL = "{% url 'puzzles:final-message' %}";
-      </script>
+        </script>
 
       <!-- Load the JavaScript for waiting and redirecting -->
       <script src="{% static 'puzzles/js/passcode_check.js' %}"></script>
     {% endif %}
     <!--end if-->
-  {% else %}
-    <p>
-      <i>Tantrikaa</i>, I have to say, em disappointed with you. Laggtaa hai
-      aaj kal che se <i>kabutarr</i> nhi khaa rhi. Han lekn saare attempts
-      zarurr khaa gyi. 🤣 lol em too funny
-    </p>
-    <p>
-      Anyway, the <b>CORRECT PASSCODE</b> is <b>123</b>!
-    </p>
-    <p>
-      Now, you shall be automatically redirected to the final message page in
-      some time, please wait...
-    </p>
+    {% else %}
+      <p>
+        <i>Tantrikaa</i>, I have to say, em disappointed with you. Laggtaa hai
+        aaj kal che se <i>kabutarr</i> nhi khaa rhi. Han lekn saare attempts
+        zarurr khaa gyi. 🤣 lol em too funny
+      </p>
+      <p>
+        Anyway, the <b>CORRECT PASSCODE</b> is <b>123</b>!
+      </p>
+      <div class="d-flex justify-content-center align-items-center">
+        <p>
+          Now, you shall be automatically redirected to the final message page in
+          some time, please wait...
+        </p>
+      </div>
 
     {% if show_redirect_script %}
       <script>

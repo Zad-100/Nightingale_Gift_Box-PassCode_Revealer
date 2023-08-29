@@ -1,0 +1,286 @@
+/* Content Styles */
+#instructions {
+    text-decoration: underline;
+}
+
+#number-matrix {
+    margin-left: 10%;
+}
+
+/* Board Styles */
+#tile-1 {
+    background-image: url('../images/slices/slice_1.png');
+}
+
+#tile-2 {
+    background-image: url('../images/slices/slice_2.png');
+}
+
+#tile-3 {
+    background-image: url('../images/slices/slice_3.png');
+}
+
+#tile-4 {
+    background-image: url('../images/slices/slice_4.png');
+}
+
+#tile-5 {
+    background-image: url('../images/slices/slice_5.png');
+}
+
+#tile-6 {
+    background-image: url('../images/slices/slice_6.png');
+}
+
+#tile-7 {
+    background-image: url('../images/slices/slice_7.png');
+}
+
+#tile-8 {
+    background-image: url('../images/slices/slice_8.png');
+}
+
+#tile-9 {
+    background-image: url('../images/slices/slice_moveme.png');
+}
+
+#border-container {
+    width: 422px;
+    height: 422px;
+    border: 10px solid #d711ff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.8); /* Gentle Shadow */
+    margin: auto;
+}
+
+#game-container {
+    padding-left: 1px;
+    padding-top: 1.5px;
+    position: relative;
+    width: 402px;
+    height: 402px;
+    margin: auto;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 132px);
+    grid-template-rows: repeat(3, 132px);
+    gap: 2px;
+    width: 402px;
+    height: 402px;
+    position: relative;
+    margin: auto;
+}
+
+.tile {
+    width: 132px;
+    height: 132px;
+    background-size: 132px 132px; 
+    cursor: pointer;
+}
+
+.tile.blank {
+    cursor: default; /* So the blank tile doesn't look clickable */
+}
+
+
+
+/* Show Numbers Styles */
+.tile-number {
+    /* After toggling the show-numbers-button, the display is set to "block"
+    and that blocks any tile-clicks from getting through to the tiles. To
+    get around this issue, simply uncomment the below line */
+    /* pointer-events: none; */
+    display: none; /* Hide the tile number initially */
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-size: 1.5em;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+
+/* Ghost Image Styles */
+#ghost-img-container {
+    padding-left: 1px;
+    padding-top: 1.5px;
+    visibility: hidden; /* Hide the ghost image initially */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 401px;
+    height: 401px;
+    /* margin: auto; */
+}
+
+#ghost-img {
+    width: 100%;
+    height: 100%;
+    opacity: 0.6; /* Make the image semi-transparent */
+}
+
+/* Button Styles */
+#solve-button {
+    display: none; /* Hide the solve button from Nightingale */
+}
+
+
+
+/* After Solving Styles */
+.complete-image {
+    background-image: url('../images/Slider_Puzzle_Sexy_Pic_Edited.png');
+    background-size: cover;
+    width: 402px;
+    height: 402px;
+    position: relative;
+    margin: auto;
+}
+
+
+h3 {
+    text-align: center;
+    font-size: 2em;
+    color: black;
+}
+
+/* Media queries for mobile optimisation */
+@media screen and (max-width: 768px) {
+    #border-container {
+        width: 350px;
+        height: 350px;
+        border: 10px solid #d711ff;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.8); /* Gentle Shadow */
+        margin: auto;
+    }
+
+    #game-container {
+        padding-left: 1px;
+        padding-top: 1.5px;
+        position: relative;
+        width: 330px;
+        height: 330px;
+        margin: auto;
+    }
+    
+    .board {
+        display: grid;
+        grid-template-columns: repeat(3, 108px);
+        grid-template-rows: repeat(3, 108px);
+        gap: 2px;
+        width: 330px;
+        height: 330px;
+        position: relative;
+        margin: auto;
+    }
+    
+    .tile {
+        width: 108px;
+        height: 108px;
+        background-size: 108px 108px; 
+        cursor: pointer;
+    }
+    
+    /* Ghost Image Styles */
+    #ghost-img-container {
+        padding-left: 1px;
+        padding-top: 1.5px;
+        visibility: hidden; /* Hide the ghost image initially */
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 329px;
+        height: 329px;
+        /* margin: auto; */
+    }
+    
+    /* Show Numbers Styles */
+    .tile-number {
+        /* After toggling the show-numbers-button, the display is set to "block"
+        and that blocks any tile-clicks from getting through to the tiles. To
+        get around this issue, simply uncomment the below line */
+        /* pointer-events: none; */
+        display: none; /* Hide the tile number initially */
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        font-size: 1.2em;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+}
+
+/* Media queries specifically for iPhone 13 */
+@media only screen
+and (device-width : 390px)
+and (device-height : 844px)
+and (-webkit-device-pixel-ratio : 3) {
+    #border-container {
+        width: 350px;
+        height: 350px;
+        border: 10px solid #d711ff;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.8); /* Gentle Shadow */
+        margin: auto;
+    }
+
+    #game-container {
+        padding-left: 1px;
+        padding-top: 1.5px;
+        position: relative;
+        width: 330px;
+        height: 330px;
+        margin: auto;
+    }
+    
+    .board {
+        display: grid;
+        grid-template-columns: repeat(3, 108px);
+        grid-template-rows: repeat(3, 108px);
+        gap: 2px;
+        width: 330px;
+        height: 330px;
+        position: relative;
+        margin: auto;
+    }
+    
+    .tile {
+        width: 108px;
+        height: 108px;
+        background-size: 108px 108px; 
+        cursor: pointer;
+    }
+
+    /* Ghost Image Styles */
+    #ghost-img-container {
+        padding-left: 1px;
+        padding-top: 1.5px;
+        visibility: hidden; /* Hide the ghost image initially */
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 329px;
+        height: 329px;
+        /* margin: auto; */
+    }
+    
+    /* Show Numbers Styles */
+    .tile-number {
+        /* After toggling the show-numbers-button, the display is set to "block"
+        and that blocks any tile-clicks from getting through to the tiles. To
+        get around this issue, simply uncomment the below line */
+        /* pointer-events: none; */
+        display: none; /* Hide the tile number initially */
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        font-size: 1.2em;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+}

@@ -9,7 +9,12 @@
 
 <!--Define the content block-->
 {% block content %}
-  <h1>Happy Birthday, Honeybunch!</h1>
+  <h1 class="d-flex justify-content-center align-items-center">
+    Happy Birthday, Honeybunch!
+  </h1>
+
+  <br>
+
   <div id="message">
     <p>
       Welcome to the puzzles app. 😊 This is a simple web app designed to help you
@@ -22,11 +27,11 @@
   
   <br>
 
-  <p>
+  <p class="text-center">
     Ready to work your <i>Taantrikk Vidyaaen</i>? 🌚 If so, just smash the "Go"
-    button below and get started! 🤙🏻🙌🏻 <b>ALL THE BEST, MISS!!! 🍀</b>
+    button below and get started! 🤙🏻🙌🏻 <b>ALL THE BEST, MISS!!!</b> 🍀
   </p>
-  <p>
+  <p class="d-flex justify-content-center align-items-center">
     <a href="{% url 'puzzles:slider-puzzle' %}">
       <button type="button">Go</button>
     </a>
