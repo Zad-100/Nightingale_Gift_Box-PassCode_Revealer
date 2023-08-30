@@ -1,4 +1,7 @@
-# virtual environments
+# Environment Variable
+.env
+
+# Virtual environments
 pr_env
 
 # Byte-compiled / optimized / DLL files

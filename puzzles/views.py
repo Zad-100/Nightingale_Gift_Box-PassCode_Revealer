@@ -7,7 +7,7 @@ from .forms import RelationshipsSentimentsForm
 from .forms import PasscodeForm
 from .category_instructions import instructions_map
 
-PASSCODE = 123
+PASSCODE = 213
 
 # Create your views here.
 
@@ -150,11 +150,12 @@ def category_form_view(request, form_category):
             
             # Get the next category
             selected_categories = request.session.get('selected_categories', [])
-            request.session['curr_category_index'] += 1
             curr_category_index = request.session.get('curr_category_index', 0)
-
+            curr_category_index += 1
+            
             if curr_category_index <= len(selected_categories) - 1:
                 next_category = selected_categories[curr_category_index]
+                request.session['curr_category_index'] += curr_category_index
 
                 # Redirect to the next category form
                 return redirect('puzzles:category-form-view',
