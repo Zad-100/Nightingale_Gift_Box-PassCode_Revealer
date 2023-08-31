@@ -73,18 +73,31 @@ def dummy_form_main_view(request):
             optCat2 = form.cleaned_data['travel']
 
             ## Debug - print the selected categories
+            print("")
+            print("***********************************************************")
             print("optCat1: ", optCat1)
             print("optCat2: ", optCat2)
+            print("***********************************************************")
+            print("")
 
             # Create a list of categories to be saved in Django's
             # user session
-            request.session['selected_categories'] = [
-                'colours-fashion',
-                'food-treats',
-                'entertainment',
-                'music-songs',
-                'memory-lane',
-            ]
+            if 'selected_categories' not in request.session:
+                request.session['selected_categories'] = [
+                    'colours-fashion',
+                    'food-treats',
+                    'entertainment',
+                    'music-songs',
+                    'memory-lane',
+                ]
+            # end if
+
+            print("")
+            print("***********************************************************")
+            print("Initialisation request.session['selected_categories']:",
+                  request.session['selected_categories'])
+            print("***********************************************************")
+            print("")
 
             if optCat1:
                 request.session['selected_categories'].append(
@@ -96,10 +109,24 @@ def dummy_form_main_view(request):
                     'travel'
                 )
             # end if
+            print("")
+            print("***********************************************************")
+            print("Final request.session['selected_categories']:",
+                  request.session['selected_categories'])
+            print("***********************************************************")
+            print("")
             
             # Also save the index of the current category so that the
             # next category can be fetched
-            request.session['curr_category_index'] = 0
+            if 'curr_category_index' not in request.session:
+                request.session['curr_category_index'] = 0
+            # end if
+            print("")
+            print("***********************************************************")
+            print("Initialisation of request.session['curr_category_index']:",
+                  request.session['curr_category_index'])
+            print("***********************************************************")
+            print("")
 
             # Redirect to the first category form
             return redirect('puzzles:category-form-view',
@@ -115,13 +142,24 @@ def dummy_form_main_view(request):
         'form': form,
     }
 
+    print("")
+    print("======================START CATEGORIES=============================")
+    print("")
+
     return render(request, 'puzzles/dummy_form_main.html', context)
 # end view dummy_form_main_view()
 
 
 def category_form_view(request, form_category):
     """View to render the form for the selected category"""
-
+    
+    print("")
+    print("*******************************************************************")
+    print("Selected Categories Check:",
+          request.session['selected_categories'])
+    print("*******************************************************************")
+    print("")
+    
     Form_Class = None
 
     # Map form_category to actual form class
@@ -150,12 +188,31 @@ def category_form_view(request, form_category):
             
             # Get the next category
             selected_categories = request.session.get('selected_categories', [])
-            curr_category_index = request.session.get('curr_category_index', 0)
+            curr_category_index = request.session.get('curr_category_index', None)
+            print("")
+            print("***********************************************************")
+            print("Present curr_category_index:", curr_category_index)
             curr_category_index += 1
-            
+            print("Incremented curr_category_index (getting next category):", 
+                  curr_category_index)
+            print("***********************************************************")
+            print("")
+
             if curr_category_index <= len(selected_categories) - 1:
+                print("")
+                print("*******************************************************")
+                print("curr_category_index <= len(selected_categories) - 1",
+                      "... still categories left")
+                print("*******************************************************")
+                print("")
                 next_category = selected_categories[curr_category_index]
-                request.session['curr_category_index'] += curr_category_index
+                request.session['curr_category_index'] = curr_category_index
+                print("")
+                print("*******************************************************")
+                print("Check if curr_category_index updated in session:",
+                      request.session['curr_category_index'])
+                print("*******************************************************")
+                print("")
 
                 # Redirect to the next category form
                 return redirect('puzzles:category-form-view',
@@ -198,11 +255,23 @@ def passcode_check(request):
     if 'attempts_left' not in request.session:
         request.session['attempts_left'] = 3
     # end if
+    print("")
+    print("*******************************************************************")
+    print("Initialisation of request.session['attempts_left']:",
+          request.session['attempts_left'])
+    print("*******************************************************************")
+    print("")
 
     # Session variable to store whether to show the wait and redirect script
     if 'show_redirect_script' not in request.session:
         request.session['show_redirect_script'] = False
     # end if
+    print("")
+    print("*******************************************************************")
+    print("Initialisation of request.session['show_redirect_script']:",
+          request.session['show_redirect_script'])
+    print("*******************************************************************")
+    print("")
 
     if request.method == 'POST':
         form = PasscodeForm(request.POST)
@@ -222,11 +291,29 @@ def passcode_check(request):
 
                 # Change the session state of verification to True
                 request.session['passcode_verified'] = True
+                print("")
+                print("*******************************************************")
+                print("Check if passcode_verified updated in session:",
+                        request.session['passcode_verified'])
+                print("*******************************************************")
+                print("")
                 # Show the wait and redirect script
                 request.session['show_redirect_script'] = True
+                print("")
+                print("*******************************************************")
+                print("Check if show_redirect_script updated in session:",
+                        request.session['show_redirect_script'])
+                print("*******************************************************")
+                print("")
             else:
                 # Decrement the attempts left
                 request.session['attempts_left'] -= 1
+                print("")
+                print("*******************************************************")
+                print("Check if attempts_left updated in session:",
+                        request.session['attempts_left'])
+                print("*******************************************************")
+                print("")
 
                 if request.session['attempts_left'] <= 0:
                     # Reset the number of attempts for another attempt
@@ -234,8 +321,20 @@ def passcode_check(request):
                     
                     # Change the session state of verification to False
                     request.session['passcode_verified'] = False
+                    print("")
+                    print("***************************************************")
+                    print("Check if passcode_verified updated in session:",
+                            request.session['passcode_verified'])
+                    print("***************************************************")
+                    print("")
                     # Show the wait and redirect script
                     request.session['show_redirect_script'] = True
+                    print("")
+                    print("***************************************************")
+                    print("Check if show_redirect_script updated in session:",
+                            request.session['show_redirect_script'])
+                    print("***************************************************")
+                    print("")
                 # end if
             # end if-else
     else:
