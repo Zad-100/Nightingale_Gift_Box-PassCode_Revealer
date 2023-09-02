@@ -22,6 +22,11 @@
 {% endblock %}
 
 
+{% block extracss %}
+<link rel="stylesheet" href="{% static 'puzzles/css/passcode_check.css' %}">
+{% endblock %}
+
+
 {% block content %}
   <h1 class="d-flex justify-content-center align-items-center">
     Passcode Checkpoint!
@@ -38,6 +43,9 @@
   </p>
 
   <div class="jumbotron lead">
+    <h4 id="instructions">
+      <b>Instructions</b>
+    </h4>
     <p>
       So, you have three attempts to guess the right order of the digits. If you
       get it right at any point, you'll be redirected to the final message page.
