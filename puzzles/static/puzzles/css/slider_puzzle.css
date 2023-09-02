@@ -124,7 +124,15 @@
 
 /* Button Styles */
 #solve-button {
-    display: none; /* Hide the solve button from Nightingale */
+    /* Hide the solve button from Nightingale */
+    display: inline;
+}
+
+.slider-puzzle-buttons {
+    font-size: 1em;
+    padding: 6px 12px;
+    margin: 10px 15px;
+    box-shadow: 0 4px 4px rgba(0,0,0,0.4);
 }
 
 
@@ -132,11 +140,11 @@
 /* After Solving Styles */
 .complete-image {
     background-image: url('../images/Slider_Puzzle_Sexy_Pic_Edited.png');
-    background-size: cover;
-    width: 402px;
-    height: 402px;
+    background-size: 402px 402px;
+    width: 360px;
+    height: 360px;
     position: relative;
-    margin: auto;
+    margin: 15px 15px;
 }
 
 
@@ -212,6 +220,13 @@ h3 {
         color: white;
         background-color: rgba(0, 0, 0, 0.3);
     }
+
+    /* Button Styles */
+    .slider-puzzle-buttons {
+        font-size: 0.63em;
+        padding: 6px 12px;
+        margin: 10px 15px;
+    }
 }
 
 /* Media queries specifically for iPhone 13 */
@@ -227,7 +242,7 @@ and (-webkit-device-pixel-ratio : 3) {
         box-shadow: 0 4px 8px rgba(0,0,0,0.8); /* Gentle Shadow */
         margin: auto;
     }
-
+    
     #game-container {
         padding-left: 1px;
         padding-top: 1.5px;
@@ -282,5 +297,12 @@ and (-webkit-device-pixel-ratio : 3) {
         font-size: 1.2em;
         color: white;
         background-color: rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Button Styles */
+    .slider-puzzle-buttons {
+        font-size: 0.63em;
+        padding: 6px 12px;
+        margin: 10px 15px;
     }
 }

@@ -95,6 +95,7 @@ document.addEventListener("DOMContentLoaded", function() {
          (Math.abs(blankIndex - tileIndex) === rowSize));
     } // end function isAdjacent()
 
+    // ******************Puzzle has been Solved******************
     // Function to check if puzzle is solved
     function isPuzzleSolved() {
         if (tiles.every(
@@ -102,17 +103,23 @@ document.addEventListener("DOMContentLoaded", function() {
             tile.dataset.order == index + 1 || tile.classList.contains("blank")
         )) {
             // ************If solved, hide the rest elements************
-            // Add elements to the HTML to display the full picture
-            // Hide the entire game container
-            document.querySelector("#game-container").style.display = "none";
-            // // Hide the board
-            // document.querySelector(".board").style.display = "none";
-            // Hide the solve button
-            document.querySelector("#solve-button").style.display = "none";
-            // Hide the show-numbers button
-            document.querySelector("#show-numbers-button").style.display = "none";
-            // Hide the show-ghost-img-button
-            document.querySelector("#show-ghost-img-button").style.display = "none";
+            // Add elements to the HTML to display the full picture and hide things
+            // Hide the rest content of the page
+            document.querySelector("#all-content").style.display = "none";
+            
+            // // Hide the border container
+            // document.querySelector("#border-container").style.display = "none";
+            // // Hide the entire game container
+            // document.querySelector("#game-container").style.display = "none";
+            // // // Hide the board
+            // // document.querySelector(".board").style.display = "none";
+            // // Hide the solve button
+            // document.querySelector("#solve-button").style.display = "none";
+            // // Hide the show-numbers button
+            // document.querySelector("#show-numbers-button").style.display = "none";
+            // // Hide the show-ghost-img-button
+            // document.querySelector("#show-ghost-img-button").style.display = "none";
+
             // Create a div for the full picture element
             const completeImage = document.createElement('div');
             // Add class to style the image
@@ -170,19 +177,18 @@ document.addEventListener("DOMContentLoaded", function() {
         tiles = Array.from(board.children);
     } // end function solvePuzzle()
 
-    shuffleTiles() // initialise board by shuffling tiles
-
-
+    
+    
     // ******************Show Numbers Hint System******************
     // Add an event listener to the show numbers button to listen for clicks
     document.getElementById("show-numbers-button").addEventListener("click",
-                                                    function() {
+    function() {
         // Toggle the showNumbers boolean
         showNumbers = !showNumbers;
         // Call the function to show/hide the numbers
         updateNumberOverlay();
     }); // end EventListener
-
+    
     function updateNumberOverlay() {
         const numberElements = document.querySelectorAll('.tile-number');
         numberElements.forEach(element => {
@@ -198,7 +204,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Select the ghost image container and the button
     const ghostImgContainer = document.getElementById("ghost-img-container");
     const showGhostImgButton = document.getElementById("show-ghost-img-button");
-
+    
     function showGhost() {
         ghostImgContainer.style.visibility = "visible";
         ghostImgContainer.style.zIndex = "1";
@@ -208,20 +214,31 @@ document.addEventListener("DOMContentLoaded", function() {
         ghostImgContainer.style.visibility = "hidden";
         ghostImgContainer.style.zIndex = "-1";
     } // end function hideGhost()
-
+    
     // Desktop Events
     showGhostImgButton.addEventListener("mousedown", showGhost);
     showGhostImgButton.addEventListener("mouseup", hideGhost);
     showGhostImgButton.addEventListener("mouseleave", hideGhost);
-
+    
     // Mobile Events
     showGhostImgButton.addEventListener("touchstart", function(event) {
         event.preventDefault();  // Prevent default actions like text selection
         showGhost();
     }); // end EventListener
-
+    
     showGhostImgButton.addEventListener("touchend", function(event) {
         event.preventDefault();  // Prevent default actions like context menu
         hideGhost();
     }); // end EventListener
+
+    // ******************Reshuffle Button******************
+    // Add an event listener to the reshuffle button to listen for clicks
+    document.getElementById("reshuffle-button").addEventListener("click",
+    function() {
+        // Call the function to reshuffle the tiles
+        shuffleTiles();
+    }); // end EventListener
+
+    // ******************Initialise the Board******************
+    shuffleTiles() // initialise board by shuffling tiles
 });

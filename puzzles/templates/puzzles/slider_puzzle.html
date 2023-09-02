@@ -21,113 +21,127 @@
 
 
 {% block content %}
-  <h1 class="d-flex justify-content-center align-items-center">
-    Welcome to the Slider Puzzle!
-  </h1>
-  <p>
-    This is the first of the puzzles you got to solve to get your complete
-    passcode! 😉 This puzzle is a picture-slider-puzzle. The goal is to get the
-    images in a sensible order.
-  </p>
+  <div id="all-content">
 
-  <br>
-
-  <div class="jumbotron lead">
-    <h4 id="instructions">
-      <b>Instructions</b>
-    </h4>
+    <h1 class="d-flex justify-content-center align-items-center">
+      Welcome to the Slider Puzzle!
+    </h1>
     <p>
-      ⚠ You can only move the images that are immediately next to 
-      the <i>"Move Me"</i> tile either <b>horizontally or vertically</b>.
+      This is the first of the puzzles you got to solve to get your complete
+      passcode! 😉 This puzzle is a picture-slider-puzzle. The goal is to get the
+      images in a sensible order.
     </p>
-    <p>
-      👇🏻 Simply click on the tile you want to move and it will swap places with
-      the <i>Move Me</i> tile.
-    </p>
-    <p>
-      ❓ <b>Tap</b> on the <i>Show Tile Numbers</i> button to see the
-      corresponding tile numbers get overlaid on the tiles. So, basically,
-      you have to somehow arrange the tiles as in:
-    </p>
-    <div id="number-matrix">
-      <p>[1, 2, 3]</p>
-      <p>[4, 5, 6]</p>
-      <p>[7, 8, 0]</p>
-    </div>
-    <p>Where '0' is the <i>Move Me</i> tile</p>
-    <p>
-      ❓❓ <b>Tap and Hold</b> on the <i>Show Ghost Image</i> button to see the
-      final image that you have to get to. The ghost image will be overlaid on
-      the puzzle board with a low opacity. So, you can see the image but you
-      can also see the current state of the puzzle board.
-    </p>
+  
     <br>
-    <p>All the best, Sweetie! 🤙🏻🙌🏻</p>
-  </div>
-
-  <br>
-
-  <div id="border-container">
-    <div id="game-container">
   
-      <!--Original playing board-->
-      <div class="board" id="sliderPuzzleContainer">
-        <!-- The slider puzzle grid will be rendered here via JavaScript -->
-        <div class="tile" data-order="1" id="tile-1">
-          <span class="tile-number">1</span>
-        </div>
-        <div class="tile" data-order="2" id="tile-2">
-          <span class="tile-number">2</span>
-        </div>
-        <div class="tile" data-order="3" id="tile-3">
-          <span class="tile-number">3</span>
-        </div>
-        <div class="tile" data-order="4" id="tile-4">
-          <span class="tile-number">4</span>
-        </div>
-        <div class="tile" data-order="5" id="tile-5">
-          <span class="tile-number">5</span>
-        </div>
-        <div class="tile" data-order="6" id="tile-6">
-          <span class="tile-number">6</span>
-        </div>
-        <div class="tile" data-order="7" id="tile-7">
-          <span class="tile-number">7</span>
-        </div>
-        <div class="tile" data-order="8" id="tile-8">
-          <span class="tile-number">8</span>
-        </div>
-        <div class="tile blank" data-order="9" id="tile-9"></div>
+    <div class="jumbotron lead">
+      <h4 id="instructions">
+        <b>Instructions</b>
+      </h4>
+      <p>
+        ⚠ You can only move the images that are immediately next to 
+        the <i>"Move Me"</i> tile either <b>horizontally or vertically</b>.
+      </p>
+      <p>
+        👇🏻 Simply click on the tile you want to move and it will swap places with
+        the <i>Move Me</i> tile.
+      </p>
+      <p>
+        ❓ <b>Tap</b> on the <i>Show Tile Numbers</i> button to see the
+        corresponding tile numbers get overlaid on the tiles. So, basically,
+        you have to somehow arrange the tiles as in:
+      </p>
+      <div id="number-matrix">
+        <p>[1, 2, 3]</p>
+        <p>[4, 5, 6]</p>
+        <p>[7, 8, 0]</p>
       </div>
-  
-      <!--Ghost Image for overlaying on the original playing board-->
-      <div id="ghost-img-container">
-        <img id="ghost-img" src="{% static 'puzzles/images/Slider_Puzzle_Sexy_Pic_Edited.png' %}" alt="Ghost Image">
-      </div>
-      
+      <p>Where '0' is the <i>Move Me</i> tile</p>
+      <p>
+        ❓❓ <b>Tap and Hold</b> on the <i>Show Ghost Image</i> button to see the
+        final image that you have to get to. The ghost image will be overlaid on
+        the puzzle board with a low opacity. So, you can see the image but you
+        can also see the current state of the puzzle board.
+      </p>
+      <br>
+      <p>All the best, Sweetie! 🤙🏻🙌🏻</p>
     </div>
+  
+    <br>
+  
+    <div id="border-container">
+      <div id="game-container">
+    
+        <!--Original playing board-->
+        <div class="board" id="sliderPuzzleContainer">
+          <!-- The slider puzzle grid will be rendered here via JavaScript -->
+          <div class="tile" data-order="1" id="tile-1">
+            <span class="tile-number">1</span>
+          </div>
+          <div class="tile" data-order="2" id="tile-2">
+            <span class="tile-number">2</span>
+          </div>
+          <div class="tile" data-order="3" id="tile-3">
+            <span class="tile-number">3</span>
+          </div>
+          <div class="tile" data-order="4" id="tile-4">
+            <span class="tile-number">4</span>
+          </div>
+          <div class="tile" data-order="5" id="tile-5">
+            <span class="tile-number">5</span>
+          </div>
+          <div class="tile" data-order="6" id="tile-6">
+            <span class="tile-number">6</span>
+          </div>
+          <div class="tile" data-order="7" id="tile-7">
+            <span class="tile-number">7</span>
+          </div>
+          <div class="tile" data-order="8" id="tile-8">
+            <span class="tile-number">8</span>
+          </div>
+          <div class="tile blank" data-order="9" id="tile-9"></div>
+        </div>
+    
+        <!--Ghost Image for overlaying on the original playing board-->
+        <div id="ghost-img-container">
+          <img id="ghost-img" src="{% static 'puzzles/images/Slider_Puzzle_Sexy_Pic_Edited.png' %}" alt="Ghost Image">
+        </div>
+        
+      </div>
+    </div>
+  
+  
+    <br>
+    
+    <div class="d-flex justify-content-center align-items-center">
+        <p>
+          <!--Create a button which toggles the tile numbers-->
+          <button type="button" id="show-numbers-button" class="slider-puzzle-buttons">
+            Show Tile Numbers
+          </button>
+          
+          <!--Create a button which toggles the ghost image-->
+          <button type="button" id="show-ghost-img-button" class="slider-puzzle-buttons">
+            Show Ghost Image
+          </button>
+      </p>
+    </div>
+    <div class="d-flex justify-content-center align-items-center">
+      <p>
+        <!--Create a button which re-shuffles the puzzle-->
+        <button type="button" id="reshuffle-button" class="slider-puzzle-buttons">
+          Reshuffle Board
+        </button>
+      </p>
+    </div>
+    
+    
+    <!--Create a solve button for debugging: this would be hidden-->
+    <p>
+      <button type="button" id="solve-button">Solve</button>
+    </p>
+
   </div>
-
-
-  <br>
-  
-  <!--Create a button which toggles the tile numbers-->
-  <p>
-    <button type="button" id="show-numbers-button">
-      Show Tile Numbers
-    </button>
-  </p>
-  
-  <!--Create a button which toggles the ghost image-->
-  <p>
-    <button type="button" id="show-ghost-img-button">
-      Show Ghost Image
-    </button>
-  
-  <!--Create a solve button for debugging: this would be hidden-->
-  <p>
-    <button type="button" id="solve-button">Solve</button>
-  </p>
 
 
 
