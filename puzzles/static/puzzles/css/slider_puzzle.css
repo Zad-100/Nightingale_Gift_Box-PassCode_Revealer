@@ -125,7 +125,7 @@
 /* Button Styles */
 #solve-button {
     /* Hide the solve button from Nightingale */
-    display: inline;
+    display: none;
 }
 
 .slider-puzzle-buttons {
