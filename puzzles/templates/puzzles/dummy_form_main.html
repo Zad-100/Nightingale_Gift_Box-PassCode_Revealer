@@ -72,21 +72,23 @@
   </div>
 
 
-  <div>
-    <h3>Mandotory Categories:</h3>
-    {% for name, question_count in mandatory_categories.items %}
-      <ul>
-        <li>{{ name }} ({{ question_count }} Questions)</li>
+  <div class="card">
+    <div class="card-body">
+      <h3 class="card-title">Mandotory Categories:</h3>
+      <ul class="list-group list-group-flush">
+        {% for name, question_count in mandatory_categories.items %}
+          <li class="list-group-item">{{ name }} ({{ question_count }} Qs)</li>
+        {% endfor %}
       </ul>
-    {% endfor %}
+    </div>
   
-    <h3>Optional Categories:</h3>
-    <form method="post" class="form">
-      {% csrf_token %}
-      {% bootstrap_form form %}
-      <button type="submit">Submit</button>
-    </form>
+    <div class="card-body">
+      <h3 class="card-title">Optional Categories:</h3>
+      <form method="post" class="form list-group list-group-flush">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   </div>
-
-
 {% endblock %}

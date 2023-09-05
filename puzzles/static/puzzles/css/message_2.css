@@ -3,3 +3,8 @@
     /* padding-bottom: none; */
     /* margin-bottom: none; */
 }
+
+/* Digit Revealation Margin Overriding */
+p.revealation {
+    margin: 50px 25px 90px;
+}

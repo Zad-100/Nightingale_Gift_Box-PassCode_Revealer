@@ -3,6 +3,23 @@ from .models import Colour_and_Fashion, FoodTreats, Entertainment, MusicSongs
 from .models import PersonalLifestyle, Travel, RelationshipsSentiments
 
 
+class IsCrosswordSolvedForm(forms.Form):
+    """
+    Form for validating the successful completion of the crossword puzzle
+    by taking a processed string of letters as input.
+    """
+
+    # A simply charfield for Nightingale to input the final string of letters
+    # after solving the crossword puzzle and following the steps to get the
+    # final string of letters.
+    final_string = forms.CharField(
+        label="Input Final String",
+        widget=forms.TextInput(attrs={'class': 'form-control'})
+    )
+# end class IsCrosswordSolvedForm
+
+
+
 class PasscodeForm(forms.Form):
     """Form to take passcode from Nightingale for verification of passcode."""
 
@@ -18,12 +35,12 @@ class OptionalCategoriesForm(forms.Form):
     """Form to take Optional Categories of Nightingale."""
     
     personal_lifestyle = forms.BooleanField(
-        label="Personal and Lifestyle (2 Questions)",
+        label="Personal & Lifestyle (2 Qs)",
         required=False,
     )
 
     travel = forms.BooleanField(
-        label="Travel (2 Questions)",
+        label="Travel (2 Qs)",
         required=False,
     )
 # end class OptionalCategoriesForm

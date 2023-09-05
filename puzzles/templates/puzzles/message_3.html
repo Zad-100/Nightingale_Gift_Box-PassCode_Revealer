@@ -15,6 +15,10 @@
 {% endblock %}
 
 
+{% block extracss %}
+  <link rel="stylesheet" href="{% static 'puzzles/css/message_3.css' %}">
+{% endblock %}
+
 
 {% block content %}
   <h1 class="d-flex justify-content-center align-items-center">
@@ -39,21 +43,21 @@
     </p>
     <p>
       I mean, well, coz tujhe itnaa jyaadaa nhi jaantaa, thus this form you just
-      submitted. It was so I could get to know you better. 🥺 (also, next
+      submitted. <b>It was so I could get to know you better</b>. 🥺 (also, next
       birthday pe fr se ek website nhi banaa paaungaa baut mehenatt hai, chenbodd!
       kuch tre pasand kaa khareed ke pakkddaa dungaa tujhe... Expectations high
       matt rakhiyo... 🥺👉🏻👈🏻)
     </p>
     <p>
       Chorr ab sabko. Jyaadaa emotional nhi hoten. Final part khatam kr diyaa hai
-      tune so, here's your final reward! The final one of the three digits of your
-      passcode! 🌟🌟🌟
-      The third and final digit you get is <strong>4</strong>.
+      tune so, here's your final reward!
+    </p>
+    <p class="revealation">
+      The final one of the three digits of your
+      passcode! 🌟🌟🌟 The third and final digit you get
+      is <strong>{{ message_3_digit }}</strong>.
     </p>
   </div>
-
-  <br>
-  <br>
 
   <p class="d-flex justify-content-center align-items-center">
     <h3>Are are are wait wait wait...</h3>
