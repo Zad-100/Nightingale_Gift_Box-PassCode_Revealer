@@ -23,7 +23,7 @@
 
 
 {% block extracss %}
-<link rel="stylesheet" href="{% static 'puzzles/css/passcode_check.css' %}">
+  <link rel="stylesheet" href="{% static 'puzzles/css/passcode_check.css' %}">
 {% endblock %}
 
 
@@ -36,7 +36,7 @@
 
   <p>
     First things first: Congratulations on completing all the puzzles! You're
-    really the infamous <i>Taantrikk</i> that people say you are!!! 🥳🎉🙌🏻
+    really the infamous <i>Tantrikaa</i> that people say you are!!! 🥳🎉🙌🏻
     Now, you have the three digits of the passcode. However, there's one last
     twist of them all. It's <b>NOT NECESSARY</b> that the order in which
     you got the digits is the right order. 🌚
@@ -62,69 +62,130 @@
 
   <br>
   <br>
-
-  {% if passcode_verified is None %}
-    <form method="post" class="form">
-      {% csrf_token %}
-      {% bootstrap_form form %}
-      <p>
-        <button type="submit">Submit</button>
-      </p>
-    </form>
-    <br>
-    <div class="jumbotron lead">
-      You have {{ attempts_left }} attempts left...
-    </div>
-  {% elif passcode_verified %}
+  
+  <form method="post" class="form">
+    {% csrf_token %}
+    {% bootstrap_form form %}
     <p>
-      That's my <i>Taantrikk</i>, naa!!! 🎊 You got it right!!!
+      <button type="submit">Submit</button>
     </p>
-    <div class="blockquote">
-      <p>Passcode is indeed <b>123</b></p>
-    </div>
-    <div class="d-flex justify-content-center align-items-center">
-      <p>
-        Now, you shall be automatically redirected to the final message page in
-        some time, please wait...
-      </p>
-    </div>
+  </form>
+  
+  <!-- Hidden div (a line break only) to store the `passcode_verified` value -->
+  <div id="is-passcode-verified" data-is-passcode-verified="{{ passcode_verified }}">
+    <br>
+  </div>
+
+  <div class="alert alert-warning">
+    You have {{ attempts_left }} attempts left...
+  </div>
+
+  <br>
+
+  <!-- Modal: Pops up a dialog box over the current content -->
+  <div class="modal fade" id="verification-modal" tabindex="-1" role="dialog" aria-labelledby="verification-modal-label" aria-hidden="true">
     
-    {% if show_redirect_script %}
-    <script>
-        // Inline JavaScript just for the URL generation
-        var finalMessageURL = "{% url 'puzzles:final-message' %}";
-        </script>
+    <div class="modal-dialog" role="document">
 
-      <!-- Load the JavaScript for waiting and redirecting -->
-      <script src="{% static 'puzzles/js/passcode_check.js' %}"></script>
-    {% endif %}
-    <!--end if-->
-    {% else %}
-      <p>
-        <i>Tantrikaa</i>, I have to say, em disappointed with you. Laggtaa hai
-        aaj kal che se <i>kabutarr</i> nhi khaa rhi. Han lekn saare attempts
-        zarurr khaa gyi. 🤣 lol em too funny
-      </p>
-      <p>
-        Anyway, the <b>CORRECT PASSCODE</b> is <b>123</b>!
-      </p>
-      <div class="d-flex justify-content-center align-items-center">
-        <p>
-          Now, you shall be automatically redirected to the final message page in
-          some time, please wait...
-        </p>
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title" id="verification-modal-label">
+              <!-- If passcode wrong but attempts left -->
+              {% if passcode_verified == -1 %}
+                🙂 Galat Thaa Ji 🙂
+              <!-- If passcode not successfully verified; attempts over too -->
+              {% elif passcode_verified == 0 %}
+                😞 Disappointed 😞
+              <!-- If passcode successfully verified -->
+              {% elif passcode_verified == 1 %}
+                🍾 Pop Champagne 🍾
+              {% endif %}
+            </h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <!-- &times is used to render the multiplication symbol in HTML -->
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <!-- Modal Content -->
+        <div class="modal-body">
+          {% if passcode_verified == -1 %}
+            <p>
+              Galat daalaa yaarr... Shi shi daalo 🤦🏻‍♂️
+            </p>
+            <p>
+              Fook, that sounds wrong 😳
+            </p>
+            <p>
+              Koi ni, fir se try kr le... 🤷🏻‍♂️ You still have {{ attempts_left }}
+              attempts left 😉
+            </p>
+          {% elif passcode_verified == 0 %}
+            <p>
+              Disappointed, I am, <i>Tantrikaa</i>.
+            </p>
+            <p>
+              Lagtaa hai aaj kal che se <i>kabutarr</i> nahi khaa rahi
+            </p>
+            <p>
+              Han but saare attempts zarurr khaa gayiii 🤣🤣🤣🤣🤣🤣
+            </p>
+            <p>
+              lol, em just too funny
+            </p>
+            <p class="revealation">
+              Nevermind, the CORRECT PASSCODE is *drumrolls*
+              <b>{{ passcode }}</b>!
+            </p>
+            <p>
+              Now, you shall be automatically re-directed to the next (final)
+              page in about 30 secs...
+            </p>
+          {% elif passcode_verified == 1 %}
+            <p>
+              Coz you have got the passcode absolutely right!!! You deserved
+              this for sure! 🥳
+            </p>
+            <p class="revealation">
+              Passcode is indeed <b>{{ passcode }}</b>
+            </p>
+            <p>
+              Now, you shall be automatically re-directed to the next (final)
+              page in about 30 secs...
+            </p>
+          {% endif %}
+        </div>
+        
+        <!-- Modal Footer (Buttons and Redirection) -->
+        <div class="modal-footer">
+          {% if passcode_verified == -1 %}
+            <!-- Button to be on the same page and try again -->
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+              Try Again
+            </button>
+          {% elif passcode_verified == 0 or passcode_verified == 1 %}
+            <!-- Button to go to the next page right away without waiting -->
+            <a href="{% url 'puzzles:final-message' %}">
+              <button type="button" class="btn btn-primary">
+                Heck, automatic! Go now!
+              </button>
+            </a>
+          {% endif %}
+        </div>
+
       </div>
+    
+    </div>
 
-    {% if show_redirect_script %}
-      <script>
-        // Inline JavaScript just for the URL generation
-        var finalMessageURL = "{% url 'puzzles:final-message' %}";
-      </script>
-      
-      <!-- Load the JavaScript for waiting and redirecting -->
-      <script src="{% static 'puzzles/js/passcode_check.js' %}"></script>
-    {% endif %}
-    <!--end if-->
-  {% endif %}
-  <!--end if-elif-else-->
+  </div>
+
+
+  <!-- Load the JavaScript for waiting and redirecting -->
+  <script>
+    // Inline JavaScript just for the URL generation
+    var finalMessageURL = "{% url 'puzzles:final-message' %}";
+  </script>
+  <script src="{% static 'puzzles/js/passcode_check.js' %}"></script>
 {% endblock %}

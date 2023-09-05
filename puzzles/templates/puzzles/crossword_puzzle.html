@@ -18,7 +18,7 @@
 
 
 {% block extracss %}
-<link rel="stylesheet" href="{% static 'puzzles/css/crossword_puzzle.css' %}">
+  <link rel="stylesheet" href="{% static 'puzzles/css/crossword_puzzle.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -71,6 +71,11 @@
       ☝🏻 You can also go to a word from its clue. Simply tap on the clue to go
       to the word in the grid and start filling it up *That's what she said*
     </p>
+    <p>
+      ⭐ On solving the crossword puzzle, you will see a star pop out on the
+      crossword. That's the website's way of telling you that you have solved
+      the puzzle correctly.
+    </p>
 
     <br>
 
@@ -78,16 +83,41 @@
   </div>
 
   <br>
-
+  
 
   <div class="crossword-container d-flex justify-content-center align-items-center">
     <iframe title="NG-BDay-CW" class="crossword-iframe" frameborder="10" src="https://crosswordlabs.com/embed/nightingales-birthday-crossword"></iframe>
   </div>
+  
+  <br>
+  <br>
+  
+  <hr id="horizontal-line">
+  
+  <div>
+    <div class="alert alert-info">
+      <p class="text-info">
+        If you think you have solved the crossword puzzle, tap on the button
+        below and follow the steps mentioned in the next page.
+      </p>
+    </div>
+    <div class="alert alert-warning">
+      <p class="text-dark lead">
+        ⚠ But before that - <b>MAKE SURE YOU HAVE THE ANSWERS OF THE CROSSWORD
+        WRITTEN SOMEWHERE.</b> You will need them in the next page. 🙂
+      </p>
+    </div>
 
-  <br>
-  <br>
-  <br>
-
-  <!-- Load the JavaScript for the slider puzzle. -->
-  <script src="{% static 'puzzles\js\crossword_puzzle.js' %}"></script>
+    <br>
+    
+    <div class="d-flex justify-content-center align-items-center">
+      <p>
+        <a href="{% url 'puzzles:crossword-puzzle-check' %}">
+          <button type="button">
+            Solved The Crossword!
+          </button>
+        </a>
+      </p>
+    </div>
+  </div>
 {% endblock %}

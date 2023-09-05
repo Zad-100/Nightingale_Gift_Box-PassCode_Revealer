@@ -46,6 +46,16 @@ main {
     margin: 5px 5px;
 }
 
+/* Digit Revealation Styling for message pages */
+p.revealation {
+    background: url('../images/old_paper_note.jpg') no-repeat center center;
+    background-size: cover;
+    padding: 40px 20px 20px 20px;
+    text-align: center;
+    margin: 80px auto;
+    box-shadow: 0px 20px 20px 5px rgba(0, 0, 0, 0.5);
+}
+
 /* Button Styles */
 button {
     background-color: #FF61A6; /* Bright Pink */
@@ -56,6 +66,7 @@ button {
     font-size: 1em;
     cursor: pointer;
     transition: all 0.3s ease; /* Gentle transition */
+    box-shadow: 0px 4px 0px 3px rgba(0, 0, 0, 0.6);
 }
 
 button:hover {
@@ -77,10 +88,21 @@ button:hover {
         font-size: 0.9em;
         padding: 8px 16px;
     }
+
     #message {
         font-family: 'La Belle Aurore', cursive;
         font-size: 1em;
         margin: 5px 5px;
+    }
+
+    /* Digit Revealation Styling for message pages */
+    p.revealation {
+        background: url('../images/old_paper_note.jpg') no-repeat center center;
+        background-size: cover;
+        padding: 40px 20px 20px 20px;
+        text-align: center;
+        /* margin: 50px 25px 90px; */
+        box-shadow: 0px 20px 20px 5px rgba(0, 0, 0, 0.5);
     }
 }
 
@@ -106,5 +128,15 @@ and (-webkit-device-pixel-ratio : 3) {
         font-family: 'La Belle Aurore', cursive;
         font-size: 1em;
         margin: 5px 5px;
+    }
+
+    /* Digit Revealation Styling for message pages */
+    p.revealation {
+        background: url('../images/old_paper_note.jpg') no-repeat center center;
+        background-size: cover;
+        padding: 40px 20px 20px 20px;
+        text-align: center;
+        /* margin: 50px 25px 90px; */
+        box-shadow: 0px 20px 20px 5px rgba(0, 0, 0, 0.5);
     }
 }

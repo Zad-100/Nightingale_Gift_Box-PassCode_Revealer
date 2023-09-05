@@ -3,6 +3,13 @@
     text-decoration: underline;
 }
 
+#horizontal-line {
+    height: 1px;
+    background-color: darkgray;
+    border: ridge;
+    border-color: darkslategray;
+}
+
 /* Crossword Styles */
 .crossword-container{
     width: 800px;

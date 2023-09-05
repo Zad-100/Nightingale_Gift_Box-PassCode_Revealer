@@ -14,7 +14,7 @@
 {% endblock %}
 
 {% block extracss %}
-<link rel="stylesheet" href="{% static 'puzzles/css/message_1_message_revealer.css' %}">
+  <link rel="stylesheet" href="{% static 'puzzles/css/message_1.css' %}">
 {% endblock %}
 
 
@@ -34,21 +34,25 @@
       Just wow! 🙇🏻‍♂️ I guess, <i>Taantrikk Vidyaaen</i> aapki baut kaam
       aa rhin. 🤣
     </p>
-    <p>
+
+    <p class="revealation">
       Now, you have earned one of the three digits of your passcode! 🌟
-      The first digit you get is <strong>1</strong>.
+      The first digit you get is <strong>{{ message_1_digit }}</strong>.
     </p>
+    
     <p>
       So, this was the photu I used for making the slider puzzle: <br>
       <div class="d-flex justify-content-center align-items-center">
-        <img id="sldrPic" src="{% static 'puzzles/images/Slider_Puzzle_Sexy_Pic_Edited.png' %}" alt="First Pic You Ever Shared With Me"> <br>
+        <img id="sldr-pic" src="{% static 'puzzles/images/Slider_Puzzle_Sexy_Pic_Edited.png' %}" alt="First Pic You Ever Shared With Me"> <br>
       </div>
   
       <br>
       Tujhe yaad hai kyaa yeh photu ke baare??? 🌚
   
-      <button type="button" id="showMessageButton">Tap to Remember</button>
-      <div id="hiddenMessage">
+      <button type="button" id="show-message-button" data-toggle="collapse" data-target="#hidden-message" aria-expanded="false" aria-controls="hidden-message">
+        Tap to Remember
+      </button>
+      <div class="collapse" id="hidden-message">
         <p>
           This was the very first pic that you ever shared with me (and that was
           over mail, lol, coz mko baut pasand aai thi and I needed full HD.
@@ -75,7 +79,4 @@
       <button type="button">Next Puzzle</button>
     </a>
   </p>
-
-  <!--Load the javascript file-->
-  <script src="{% static 'puzzles/js/message_1_message_revealer.js' %}"></script>
-  {% endblock %}
+{% endblock %}

@@ -4,15 +4,26 @@ from .forms import OptionalCategoriesForm
 from .forms import ColoursFashionForm, FoodTreatsForm, EntertainmentForm
 from .forms import MusicSongsForm, PersonalLifestyleForm, TravelForm
 from .forms import RelationshipsSentimentsForm
-from .forms import PasscodeForm
+from .forms import PasscodeForm, IsCrosswordSolvedForm
 from .category_instructions import instructions_map
 
+
+
 PASSCODE = 314
+FIRST_DIGIT = str(PASSCODE)[0]
+SECOND_DIGIT = str(PASSCODE)[1]
+THIRD_DIGIT = str(PASSCODE)[2]
+
+FINAL_STRING = sorted("HURATEY".lower())
+FINAL_STRING_LIST = list(FINAL_STRING)
+
+
 
 # Create your views here.
 
 def index(request):
     """The home page of puzzles"""
+
     return render(request, 'puzzles/index.html')
 # end view index()
 
@@ -21,13 +32,17 @@ def index(request):
 # ***********Slider Puzzle and its Message Page Views***********
 def slider_puzzle(request):
     """The slider puzzle page"""
+
     return render(request, 'puzzles/slider_puzzle.html')
 # end view slider_puzzle()
 
 
 def message_1(request):
     """The message page after completing slider puzzle successfully"""
-    return render(request, 'puzzles/message_1.html')
+
+    context = {'message_1_digit': SECOND_DIGIT}
+
+    return render(request, 'puzzles/message_1.html', context)
 # end view message_1()
 
 
@@ -35,13 +50,59 @@ def message_1(request):
 # ***********Crossword Puzzle and its Message Pages Views***********
 def crossword_puzzle(request):
     """The crossword puzzle page"""
+
     return render(request, 'puzzles/crossword_puzzle.html')
 # end view crossword_puzzle()
 
 
+def crossword_puzzle_check(request):
+    """The page to verify if crossword puzzle solved correctly"""
+
+    isSolved = -1 # -1: not checked, 0: not solved, 1: solved
+
+    if request.method == 'POST':
+        form = IsCrosswordSolvedForm(request.POST)
+        if form.is_valid():
+            final_string = form.cleaned_data['final_string']
+
+            print("")
+            print("")
+            print("******************FINAL STRING********************",
+                  final_string, sep='\n')
+            print("")
+            print("")
+
+            if list(sorted(final_string.lower())) == FINAL_STRING_LIST:
+                isSolved = 1
+            else:
+                isSolved = 0
+            # end if
+
+            print("")
+            print("***********************************************************")
+            print("isSolved: ", isSolved)
+            print("***********************************************************")
+            print("")
+        # end if
+    else:
+        form = IsCrosswordSolvedForm()
+    # end if-else
+
+    context = {
+        'form': form,
+        'isSolved': isSolved,
+    }
+
+    return render(request, 'puzzles/crossword_puzzle_check.html', context)
+# end view crossword_puzzle_check()
+
+
 def message_2(request):
     """The message page after completing crossword puzzle successfully"""
-    return render(request, 'puzzles/message_2.html')
+    
+    context = {'message_2_digit': FIRST_DIGIT}
+
+    return render(request, 'puzzles/message_2.html', context)
 # end view message_2()
 
 
@@ -54,17 +115,17 @@ def dummy_form_main_view(request):
     """
 
     mandatory_categories = {
-        "Colours and Fashion": 10,
-        "Food and Treats": 4,
+        "Colours & Fashion": 10,
+        "Food & Treats": 4,
         "Entertainment": 6,
-        "Music and Songs": 4,
+        "Music & Songs": 4,
         "Memories": 6,
     }
 
-    optional_categories = {
-        "Personal and Lifestyle": 2,
-        "Travel": 2,
-    }
+    # optional_categories = {
+    #     "Personal & Lifestyle": 2,
+    #     "Travel": 2,
+    # }
 
     if request.method == 'POST':
         form = OptionalCategoriesForm(request.POST)
@@ -138,7 +199,6 @@ def dummy_form_main_view(request):
 
     context = {
         'mandatory_categories': mandatory_categories,
-        'optional_categories': optional_categories,
         'form': form,
     }
 
@@ -226,6 +286,7 @@ def category_form_view(request, form_category):
                 # Redirect to third message page
                 return redirect('puzzles:message-3')
             # end if-else
+        # end if
     else:
         form = Form_Class()
     # end if-else
@@ -242,7 +303,10 @@ def category_form_view(request, form_category):
 
 def message_3(request):
     """The message page after completing the dummy form successfully"""
-    return render(request, 'puzzles/message_3.html')
+
+    context = {'message_3_digit': THIRD_DIGIT}
+
+    return render(request, 'puzzles/message_3.html', context)
 # end view message_3()
 
 
@@ -255,6 +319,7 @@ def passcode_check(request):
     if 'attempts_left' not in request.session:
         request.session['attempts_left'] = 3
     # end if
+
     print("")
     print("*******************************************************************")
     print("Initialisation of request.session['attempts_left']:",
@@ -266,12 +331,31 @@ def passcode_check(request):
     if 'show_redirect_script' not in request.session:
         request.session['show_redirect_script'] = False
     # end if
+
     print("")
     print("*******************************************************************")
     print("Initialisation of request.session['show_redirect_script']:",
           request.session['show_redirect_script'])
     print("*******************************************************************")
     print("")
+
+    # Session variable to store whether the passcode is verified
+    # passcode_verified = None => initialisation of the page
+    # passcode_verified = -1 => wrong passcode entered and there's still
+    # attempts left
+    # passcode_verified = 0 => attempts are over and still incorrect
+    # passcode_verified = 1 => correct passscode entered within attempts
+    if 'passcode_verified' not in request.session:
+        request.session['passcode_verified'] = None
+    # end if
+
+    print("")
+    print("*******************************************************************")
+    print("Initialisation of request.session['passcode_verified']:",
+          request.session['passcode_verified'])
+    print("*******************************************************************")
+    print("")
+    
 
     if request.method == 'POST':
         form = PasscodeForm(request.POST)
@@ -289,16 +373,20 @@ def passcode_check(request):
                 # Reset the number of attempts for another attempt
                 del request.session['attempts_left']
 
-                # Change the session state of verification to True
-                request.session['passcode_verified'] = True
+                # Correct passcode entered; passcode_verification = 1
+                # Change the session state of verification to 1
+                request.session['passcode_verified'] = 1
+
                 print("")
                 print("*******************************************************")
                 print("Check if passcode_verified updated in session:",
                         request.session['passcode_verified'])
                 print("*******************************************************")
                 print("")
+                
                 # Show the wait and redirect script
                 request.session['show_redirect_script'] = True
+
                 print("")
                 print("*******************************************************")
                 print("Check if show_redirect_script updated in session:",
@@ -306,8 +394,14 @@ def passcode_check(request):
                 print("*******************************************************")
                 print("")
             else:
+                # Incorrect passcode entered and attempts left;
+                # passcode_verification = -1
+                # Change the session state of verification to -1
+                request.session['passcode_verified'] = -1
+
                 # Decrement the attempts left
                 request.session['attempts_left'] -= 1
+
                 print("")
                 print("*******************************************************")
                 print("Check if attempts_left updated in session:",
@@ -319,16 +413,20 @@ def passcode_check(request):
                     # Reset the number of attempts for another attempt
                     del request.session['attempts_left']
                     
-                    # Change the session state of verification to False
-                    request.session['passcode_verified'] = False
+                    # Attempts over and still incorrect; passcode_verified = 0
+                    # Change the session state of verification to 0
+                    request.session['passcode_verified'] = 0
+
                     print("")
                     print("***************************************************")
                     print("Check if passcode_verified updated in session:",
                             request.session['passcode_verified'])
                     print("***************************************************")
                     print("")
+
                     # Show the wait and redirect script
                     request.session['show_redirect_script'] = True
+
                     print("")
                     print("***************************************************")
                     print("Check if show_redirect_script updated in session:",
@@ -337,6 +435,7 @@ def passcode_check(request):
                     print("")
                 # end if
             # end if-else
+        # end if
     else:
         form = PasscodeForm()
     # end if-else
@@ -347,6 +446,7 @@ def passcode_check(request):
         'passcode_verified': request.session.get('passcode_verified', None),
         'show_redirect_script': request.session.get('show_redirect_script',
                                                     False),
+        'passcode': str(PASSCODE),
     }
 
     return render(request, 'puzzles/passcode_check.html', context)
@@ -356,5 +456,6 @@ def passcode_check(request):
 # The very final page of the entire web app!!!
 def final_message(request):
     """The final message page"""
+
     return render(request, 'puzzles/final_message.html')
 # end view final_message()

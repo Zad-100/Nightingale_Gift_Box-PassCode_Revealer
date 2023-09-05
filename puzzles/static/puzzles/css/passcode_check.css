@@ -2,3 +2,24 @@
 #instructions {
     text-decoration: underline;
 }
+
+/* Overriding the revealation styling */
+@media screen and (max-width: 768px) {
+    p.revealation {
+        margin: 40px 72px 65px;
+        font-family: 'La Belle Aurore', cursive;
+        font-size: 1em;
+    }
+}
+
+/* Overriding the revealation styling for iPhone 13 */
+@media only screen
+and (device-width : 390px)
+and (device-height : 844px)
+and (-webkit-device-pixel-ratio : 3) {
+    p.revealation {
+        margin: 40px 87px 65px;
+        font-family: 'La Belle Aurore', cursive;
+        font-size: 1em;
+    }
+}
