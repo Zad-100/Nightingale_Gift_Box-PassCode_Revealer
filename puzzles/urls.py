@@ -19,6 +19,11 @@ urlpatterns = [
     # Crossword Puzzle Page
     path('crossword-puzzle/', views.crossword_puzzle, name='crossword-puzzle'),
 
+    # Page to verify if crossword solved correctly
+    path('crossword-puzzle/verify-if-solved/',
+         views.crossword_puzzle_check,
+         name='crossword-puzzle-check'),
+
     # Message 2 Page
     path('message-2/', views.message_2, name='message-2'),
 

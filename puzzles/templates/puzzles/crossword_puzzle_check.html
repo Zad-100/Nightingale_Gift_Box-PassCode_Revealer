@@ -1,0 +1,221 @@
+<!--
+  This page will ask Nightingale to follow a series of steps about processing
+  a string that can obtained only after solving the crossword puzzle completely
+  and accurately. If the final string that Nightingale obtains is correct, then
+  Nightingale will be redirected to the next page. Otherwise, she will be
+  redirected to the previous page (crossword_puzzle.html) to try again.
+-->
+
+
+{% extends "puzzles/base.html" %}
+
+{% load static %}
+
+
+{% block title %}
+  <title>Crossword Puzzle</title>
+{% endblock %}
+
+
+{% block extracss %}
+  <link rel="stylesheet" href="{% static 'puzzles/css/crossword_puzzle_check.css' %}">
+{% endblock %}
+
+
+{% block content %}
+  <div>
+    <h3 class="d-flex justify-content-center align-items-center">
+      Solved the Crossword?
+    </h3>
+
+    <p>
+      We expect you have your crossword answers written somewhere and ready with
+      you, right now. You are going to need them to go through the next series
+      of steps. Please, <b>READ THE INSTRUCTIONS CAREFULLY</b> and follow them
+      accordingly. 🙏🏻
+    </p>
+    <div class="container my-4 jumbotron lead">
+      <h4 id="instructions">
+        <b>Instructions</b>
+      </h4>
+
+      <dl class="row">
+      
+        <dt class="col-sm-2">STEP 1</dt>
+        <dd class="col-sm-10">
+          <p>
+            PICK out the REPEATING letters in each of the crossword
+            answers/words.
+          </p>
+          <p>
+            For instance, if the answers are: ["YOUR", "DIMPPLEESS", "ARRREEEE",
+            "SWOOOONWORRTHYYY"], then the repeating letters for each word would
+            be:
+            <ul>
+              <li>"YOUR":  <\\no repeating letters\\></li>
+              <li>"DIMPPLEESS":  P, E, S</li>
+              <li>"ARRREEEE":  R, E</li>
+              <li>"SWOOOONWORRTHYYY":  O, R, W, Y</li>
+            </ul>
+          </p>
+          <P>
+            So, your list of repeating letters from each word would be:
+            ["P", "E", "S", "R", "E", "O", "R", "W", "Y"]
+          </P>
+        </dd>
+
+        <dt class="col-sm-2">STEP 2</dt>
+        <dd class="col-sm-10">
+          <p>
+            SORT the list obtained in STEP 1 in alphabetical order and
+            ELIMINATE the DUPLICATES.
+          </p>
+          <p>
+            So, your new list of letters would be:
+            ["E", "O", "P", "R", "S", "W", "Y"]
+          </p>
+        </dd>
+
+        <dt class="col-sm-2">STEP 3</dt>
+        <dd class="col-sm-10">
+          <p>
+            ELIMINATE the sequence of letters that APPEAR CONSECUTIVELY in the
+            alphabetical order in the list obtained in STEP 2.
+          </p>
+          <p>
+            So, in the list obtained in this case, the sequence of letters that
+            appear consecutively in the alphabetical order are ["O", "P"] and
+            ["R", "S"]. So, we remove them from the list. The new list would be:
+            ["E", "W", "Y"]
+          </p>
+        </dd>
+
+        <dt class="col-sm-2">STEP 4</dt>
+        <dd class="col-sm-10">
+          <p>
+            Input the final resulting string obtained in the below input box and
+            hit the "Check" button!
+          </p>
+          <p>
+            Keep in Mind: DON'T INCLUDE ANY SPACES in the final string. Also,
+            the final string is case-insensitive.
+          </p>
+          <p>
+            So, in this example, you could have entered: "EWY" in the input box.
+          </p>
+        </dd>
+
+      </dl>
+
+    </div>
+
+    <div class="d-flex justify-content-center align-items-center">
+      <p>
+        <form method="post" class="form">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="Submit">
+            Check
+          </button>
+        </form>
+      </p>
+    </div>
+  </div>
+
+  <!-- Hidden div (a line break only) to store the `isSolved` value -->
+  <div id="is-solved-data" data-is-solved="{{ isSolved }}">
+    <br>
+  </div>
+
+  <!-- Modal: Pops up a dialog box over the current content -->
+  <div class="modal fade" id="check-modal" tabindex="-1" role="dialog" aria-labelledby="check-modal-label" aria-hidden="true">
+    
+    <div class="modal-dialog" role="document">
+
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h5 class="modal-title" id="check-modal-label">
+              {% if isSolved == 0 %}
+                🚨 WRONG STRING ALERT 🚨
+              {% elif isSolved == 1 %}
+                🎓 YOU GOT IT RIGHT 🎓
+              {% endif %}
+            </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <!-- &times is used to render the multiplication symbol in HTML -->
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <!-- Modal Content -->
+        <div class="modal-body">
+          {% if isSolved == 0 %}
+            <p>
+              Galat string enter kiyaa hai, Ma'am. 😔
+              Try again, please.
+            </p>
+            <p>
+              And you might want to go through the instructions again carefully.
+              Or may be, go back to the crossword puzzle and check your answers...
+            </p>
+          {% elif isSolved == 1 %}
+            <p>
+              Okee, now, lemme rearrange those letters for you a little bit ;)
+            </p>
+            <p class="text-center">
+              <i>
+                HEY U, ART!!! 😍
+              </i>
+            </p>
+            <P>
+              On a completely different but related note, if the
+              situation and person were different, heck, I could have
+              written a whole poem using only those letters (plus the eliminated
+              consecutive ones :') Else it would be too difficult).
+              Dekh, mere mai talent toh hai, bass ghamand nhi hai...
+              JANM DOSH hai
+              😌
+            </P>
+            <p>
+              <b>
+                Now, you can proceed to the next page that will reveal your
+                reward to you! 🎁
+              </b>
+            </p>
+          {% endif %}
+        </div>
+
+        <!-- Modal Footer (Buttons) -->
+        <div class="modal-footer">
+          {% if isSolved == 0 %}
+            <!-- Button to be on the same page and try again -->
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+              Wanna Try Again
+            </button>
+            <br>
+            <br>
+            <!-- Button to go back to crossword puzzle -->
+            <a href="{% url 'puzzles:crossword-puzzle' %}">
+              <button type="button" class="btn btn-primary">
+                Back to Crossword Puzzle
+              </button>
+            </a>
+          {% elif isSolved == 1 %}
+            <!-- Go to the message page after successful completion -->
+            <a href="{% url 'puzzles:message-2' %}">
+              <button type="button">Reward Time!</button>
+            </a>
+          {% endif %}
+        </div>
+
+      </div>
+    
+    </div>
+
+  </div>
+
+  <!-- Load the JavaScript for the crossword check page -->
+  <script src="{% static 'puzzles\js\crossword_puzzle_check.js' %}"></script>
+{% endblock %}
