@@ -1,10 +1,12 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
 # 1. Required
 class Colour_and_Fashion(models.Model):
     """Model representing Colour and Fashion Preferences of Nightingale."""
+    
     favourite_general_color = models.CharField(max_length=200)
     worst_general_color = models.CharField(max_length=200)
     cute_color = models.CharField(max_length=200)
@@ -15,6 +17,9 @@ class Colour_and_Fashion(models.Model):
     worst_outfit = models.TextField()
     favourite_shoe_wear = models.TextField()
     worst_shoe_wear = models.TextField()
+
+    
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
 # end class Colour_and_Fashion
 
 
@@ -25,6 +30,8 @@ class FoodTreats(models.Model):
     worst_food = models.CharField(max_length=200)
     favourite_ice_cream_flavour = models.CharField(max_length=200)
     worst_ice_cream_flavour = models.CharField(max_length=200)
+    
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
 # end class FoodTreats
 
 
@@ -37,6 +44,8 @@ class Entertainment(models.Model):
     favourite_indian_series_of_all_time = models.CharField(max_length=400)
     favourite_book_or_author = models.CharField(max_length=400)
     favourite_general_genre = models.CharField(max_length=400)
+    
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
 # end class Entertainment
 
 
@@ -47,6 +56,8 @@ class MusicSongs(models.Model):
     all_time_favourite_singer = models.CharField(max_length=400)
     all_time_favourite_indian_song = models.CharField(max_length=400)
     all_time_favourite_indian_singer = models.CharField(max_length=400)
+    
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
 # end class MusicSongs
 
 
@@ -55,6 +66,8 @@ class PersonalLifestyle(models.Model):
     """Model representing Personal Lifestyle Preferences of Nightingale."""
     favourite_past_time = models.TextField()
     want_to_learn = models.TextField()
+    
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
 # end class PersonalLifestyle
 
 
@@ -63,6 +76,8 @@ class Travel(models.Model):
     """Model representing Travel Preferences of Nightingale."""
     favourite_place = models.CharField(max_length=200)
     dream_destination = models.TextField(null=True)
+    
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
 # end class Travel
 
 
@@ -75,4 +90,6 @@ class RelationshipsSentiments(models.Model):
     unforgettable_gesture_from_someone = models.TextField()
     unforgettable_gesture_from_me = models.TextField()
     value_most_in_relationship = models.TextField()
+    
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
 # end class RelationshipsSentiments

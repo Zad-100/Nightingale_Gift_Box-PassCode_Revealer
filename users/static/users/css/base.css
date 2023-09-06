@@ -1,0 +1,88 @@
+/* Content Styles */
+body {
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+                url('../images/Login_Page_Image_For_Larger_Screens.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    color: #ffffff;
+}
+
+h1 {
+    font-family: 'Black Ops One', cursive;
+    font-weight: normal;
+    color: #ffffff;
+    margin: 20px;
+    border-bottom: #ffffff 1px solid;
+}
+
+.before-login-info {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.2em;
+    margin: 30px;
+}
+
+.log-out-info {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.2em;
+    margin: 30px;
+}
+
+/* Form Card Styles */
+.form-card {
+    font-family: 'Prompt', sans-serif;
+    background: rgb(255 255 255 / 0%);
+    border: rgb(255, 255, 255) solid;
+    border-radius: 10px;
+    box-shadow: 0px 8px 15px 2px rgb(8 0 0 / 85%);
+    margin: 10px auto;
+    max-width: 480px;
+}
+
+/* Form Button Styles */
+.my-form-button {
+    text-align: center;
+}
+
+
+/* Media queries for mobile optimisation */
+@media screen and (max-width: 768px) {
+    body {
+        background: linear-gradient(rgba(0, 0, 0, 0.4),
+                  rgba(0, 0, 0, 0.4)),
+                    url('../images/Login_Page_Image.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: fixed;
+        color: #ffffff;
+    }
+
+    /* Form Card Styles */
+    .form-card {
+        max-width: 360px;
+    }
+}
+
+/* Media queries specifically for iPhone 13 */
+@media only screen
+and (device-width : 390px)
+and (device-height : 844px)
+and (-webkit-device-pixel-ratio : 3) {
+    body {
+        background: linear-gradient(rgba(0, 0, 0, 0.4),
+        rgba(0, 0, 0, 0.4)),
+        url('../images/Login_Page_Image.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: fixed;
+        color: #ffffff;
+    }
+
+    /* Form Card Styles */
+    .form-card {
+        max-width: 360px;
+    }
+}

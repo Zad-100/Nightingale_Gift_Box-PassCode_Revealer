@@ -1,0 +1,56 @@
+<!--
+  This is the base template for all pages in the users app.
+  It contains the header and the content block.
+-->
+
+
+<!--Load the bootstrap4 template tags-->
+{% load bootstrap4 %}
+
+<!--Load the static files of top-level (for the entire project)-->
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Title Block -->
+    {% block title %}
+    {% endblock %}
+
+
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Prompt&family=Rajdhani&display=swap" rel="stylesheet">
+
+
+    <!--Bootstrap CSS and JS-->
+    {% bootstrap_css %}
+    {% bootstrap_javascript jquery='full' %}
+    
+    <!--Custom CSS-->
+    <link rel="stylesheet" href="{% static 'users/css/base.css' %}">
+
+    {% block extracss %}
+    {% endblock %}
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header>
+      {% block myheader %}
+      {% endblock %}
+    </header>
+
+    <!-- Body Content Block -->
+    <main>
+      {% block content %}
+      {% endblock %}
+    </main>
+  </body>
+</html>

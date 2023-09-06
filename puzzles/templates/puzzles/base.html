@@ -68,5 +68,19 @@
       {% block content %}
       {% endblock %}
     </main>
+
+    <!-- Footer -->
+    <footer>
+      {% if user.is_authenticated %}
+      <div id="footer-content">
+        <p>
+          You are logged in right now, {{ user.username }}.
+        </p>
+        <p>
+          <a href="{% url 'users:logout' %}">Tap Here To Log Out</a>
+        </p>
+      </div>
+      {% endif %}
+    </footer>
   </body>
 </html>
