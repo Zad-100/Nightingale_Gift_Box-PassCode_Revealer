@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 
 from .forms import OptionalCategoriesForm
 from .forms import ColoursFashionForm, FoodTreatsForm, EntertainmentForm
@@ -21,6 +22,7 @@ FINAL_STRING_LIST = list(FINAL_STRING)
 
 # Create your views here.
 
+@login_required
 def index(request):
     """The home page of puzzles"""
 
@@ -30,6 +32,7 @@ def index(request):
 
 
 # ***********Slider Puzzle and its Message Page Views***********
+@login_required
 def slider_puzzle(request):
     """The slider puzzle page"""
 
@@ -37,6 +40,7 @@ def slider_puzzle(request):
 # end view slider_puzzle()
 
 
+@login_required
 def message_1(request):
     """The message page after completing slider puzzle successfully"""
 
@@ -48,6 +52,7 @@ def message_1(request):
 
 
 # ***********Crossword Puzzle and its Message Pages Views***********
+@login_required
 def crossword_puzzle(request):
     """The crossword puzzle page"""
 
@@ -55,6 +60,7 @@ def crossword_puzzle(request):
 # end view crossword_puzzle()
 
 
+@login_required
 def crossword_puzzle_check(request):
     """The page to verify if crossword puzzle solved correctly"""
 
@@ -97,6 +103,7 @@ def crossword_puzzle_check(request):
 # end view crossword_puzzle_check()
 
 
+@login_required
 def message_2(request):
     """The message page after completing crossword puzzle successfully"""
     
@@ -108,6 +115,7 @@ def message_2(request):
 
 
 # ***********Counterfiet Form abd its Message Page Views***********
+@login_required
 def dummy_form_main_view(request):
     """
     The dummy form page where Nightingale will select the category of
@@ -210,6 +218,7 @@ def dummy_form_main_view(request):
 # end view dummy_form_main_view()
 
 
+@login_required
 def category_form_view(request, form_category):
     """View to render the form for the selected category"""
     
@@ -301,6 +310,7 @@ def category_form_view(request, form_category):
 # end view dummy_form()
 
 
+@login_required
 def message_3(request):
     """The message page after completing the dummy form successfully"""
 
@@ -312,6 +322,7 @@ def message_3(request):
 
 
 # ***********Passcode Check and Final Message Page Views***********
+@login_required
 def passcode_check(request):
     """Page to check if she's got the passcode right - right digits and order"""
 
@@ -454,6 +465,7 @@ def passcode_check(request):
 
 
 # The very final page of the entire web app!!!
+@login_required
 def final_message(request):
     """The final message page"""
 
