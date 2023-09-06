@@ -1,0 +1,81 @@
+<!--
+  This is the login page. It is the first page that the user sees when they
+  visit the site. It contains a form that allows the user to enter their
+  username and password. If the user is already logged in, they will be
+  redirected to the home page.
+-->
+
+<!-- Inherit from the users base template -->
+{% extends 'registration/base.html' %}
+
+<!--Load the bootstrap4 template tags-->
+{% load bootstrap4 %}
+
+
+
+<!-- Define the title block -->
+{% block title %}
+  <title>Authentication</title>
+{% endblock %}
+
+
+
+<!-- Define the page's heade -->
+{% block myheader %}
+  <h1 class="d-flex justify-content-center align-items-center">
+    Authentication First 🤚🏻
+  </h1>
+{% endblock myheader %}
+
+
+<!-- Define the content block -->
+{% block content %}
+  <div class="before-login-info">
+    <p class="d-flex justify-content-center align-items-center">
+      This web app is exclusively for Nightingale and Nightingale only! 🥺
+      Designed specially for her birthday, this app is the result of some of my
+      best efforts and some sleepless nights (em not really great with all this
+      web-dev stuff; more into ML/DL but anyway). So, I beg you to leave this site
+      alone and, if possible, let Nightingale know that you have found this
+      site. 🙏🏻
+    </p>
+    <p class="d-flex justify-content-center align-items-center">
+      If you are Nightingale, then you are at the right place. 🙋🏻‍♂️🌺
+      Just enter your username and password below (that I would have sent you
+      over WhatsApp; if not, then peleaje contact me 📞) and you will be
+      redirected to the main site. 😊🙌🏻
+    </p>
+    <p class="d-flex justify-content-center align-items-center">
+      By the way, Nightingale, here, refers to Priya Jha. :)
+      That would be the has-a-smile-with-allure-of-a-bloomed-daisy lady
+      in this page's background. 🌼😉
+    </p>
+  </div>
+
+  <br>
+
+  <div class="card form-card d-flex justify-content-center align-items-center">
+    <div class="card-body">
+      <div class="card-title d-flex justify-content-center align-items-center">
+        <h4>Prove You Are Nightingale</h4>
+      </div>
+
+      <form method="post" action="{% url 'users:login' %}" class="form">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        
+        <button type="submit" class="btn btn-primary my-form-button">
+          Em Nightingale
+        </button>
+
+        <input type="hidden" name="next"
+               value="{% url 'puzzles:index' %}"/>
+      </form>
+    </div>
+  </div>
+
+  <br>
+  <br>
+  <br>
+  <br>
+{% endblock content %}
