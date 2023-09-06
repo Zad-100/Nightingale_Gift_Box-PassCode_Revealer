@@ -44,6 +44,7 @@ if 'CODESPACE_NAME' in os.environ:
 INSTALLED_APPS = [
     # My apps
     'puzzles',
+    'users',
 
     # Third Party Apps
     'bootstrap4',
