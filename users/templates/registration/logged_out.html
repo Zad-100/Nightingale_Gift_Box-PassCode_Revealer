@@ -1,0 +1,50 @@
+<!--
+  This is the logout page. It is the page that Nightingale sees when she
+  has logged out of site. It also contains a link to login again.
+-->
+
+<!-- Inherit from the users base template -->
+{% extends 'registration/base.html' %}
+
+<!--Load the bootstrap4 template tags-->
+{% load bootstrap4 %}
+
+
+
+<!-- Define the title block -->
+{% block title %}
+  <title>Logged Out</title>
+{% endblock %}
+
+
+
+<!-- Define the page's heade -->
+{% block myheader %}
+  <h1 class="d-flex justify-content-center align-items-center">
+    Logged Out 🙋🏻‍♂️
+  </h1>
+{% endblock myheader %}
+
+
+<!-- Define the content block -->
+{% block content %}
+  <div class="log-out-info">
+    <p class="d-flex justify-content-center align-items-center">
+      You have been successfully logged out of the site. 😔 sed
+    </p>
+    <p class="d-flex justify-content-center align-items-center">
+      Now, if you are still Nightingale, then you can login again by tapping
+      the link below. 😄
+    </p>
+    <p class="d-flex justify-content-center align-items-center">
+      However, if you are not Nightingale, then I would request you to leave
+      this site alone. 🙂 Peleaje. And by the way, peleaje let Nightingale
+      know that you have found this site. 🙏🏻
+    </p>
+    <br>
+    <p class="d-flex justify-content-center align-items-center">
+      <a class="text-dark alert alert-info" href="{% url 'users:login' %}">
+        Tap To Log In Again
+      </a>
+    </p>
+{% endblock content %}

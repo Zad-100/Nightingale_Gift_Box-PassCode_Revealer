@@ -23,6 +23,12 @@ h1 {
     margin: 30px;
 }
 
+.log-out-info {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.2em;
+    margin: 30px;
+}
+
 /* Form Card Styles */
 .form-card {
     font-family: 'Prompt', sans-serif;
