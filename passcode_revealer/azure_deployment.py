@@ -27,7 +27,7 @@ CSRF_TRUSTED_ORIGINS = ['https://' + os.environ['WEBSITE_HOSTNAME']] \
                        if 'WEBSITE_HOSTNAME' in os.environ else []
 
 # Set DEBUG to False for production/deployment
-DEBUG = False
+DEBUG = True
 
 # Whitenoise configuration for collecting and serving static files
 MIDDLEWARE = [
