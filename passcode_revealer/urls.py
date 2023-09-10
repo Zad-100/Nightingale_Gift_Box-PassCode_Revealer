@@ -17,6 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+# from django.conf import settings # For static files
+# from django.conf.urls.static import static # For static files
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     
@@ -26,3 +29,14 @@ urlpatterns = [
     # include urls from the puzzles app
     path("", include('puzzles.urls')),
 ]
+
+
+
+# ***************NOT WORKING***************
+# Only for development (DEBUG = False)
+# Comment this section before deploying to Azure!!!
+# Add URL maps to redirect the base URL to our application
+# if settings.DEBUG is False:
+#     urlpatterns += static(settings.STATIC_URL,
+#                           document_root=settings.STATIC_ROOT)
+# end if

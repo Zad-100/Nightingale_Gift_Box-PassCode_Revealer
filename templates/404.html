@@ -1,0 +1,36 @@
+<!--
+  This is a customised 404 error page that will be shown when the object
+  requested by Nightingale is not available
+-->
+
+<!--Inherit from base template from the puzzles app-->
+{% extends 'puzzles/base.html' %}
+
+
+{% block title %}
+  <title>404: Not Found</title>
+{% endblock %}
+
+
+
+{% block content %}
+  <h3>
+    Oops, error 404!
+  </h3>
+
+  <p>
+    The page you are looking for is not available. 🙂 I guess you are lost
+    baby doll. 😜
+  </p>
+
+  <p>
+    Anyway, just click on the very top of this page:
+    i.e., on "Nightingale's Passcode Hunt", and you would be taken back to the
+    homepage.
+  </p>
+
+  <p>
+    If you are still facing issues, please contact the Puzzle Master at this
+    number: <b>+91 7250794009</b>
+  </p>
+{% endblock %}
