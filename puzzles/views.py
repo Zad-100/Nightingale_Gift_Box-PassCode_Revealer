@@ -253,7 +253,10 @@ def category_form_view(request, form_category):
     if request.method == 'POST':
         form = Form_Class(request.POST)
         if form.is_valid():
-            form.save()
+            form_data = form.save(commit=False) # don't save the form to db yet
+            form_data.owner = request.user # set the owner to current user
+
+            form.save() # now save (commit) the form to db
             
             # Get the next category
             selected_categories = request.session.get('selected_categories', [])

@@ -1,0 +1,41 @@
+<!--
+  This is a customised 505 error page that will be shown when there's an
+  internal server error in the Nightingale's Passcode Hunt website
+-->
+
+<!--Inherit from base template from the puzzles app-->
+{% extends 'puzzles/base.html' %}
+
+
+{% block title %}
+  <title>500: Internal Error</title>
+{% endblock %}
+
+
+
+{% block content %}
+  <h3>
+    Oops, error 500!
+  </h3>
+
+  <p>
+    There's been an internal server error. 😕 We are really sorry for the
+    inconvenience caused. 😔
+  </p>
+
+  <p>
+    The error has been logged and we will look into it as soon as possible.
+    😊
+  </p>
+
+  <p>
+    Till then, just click on the very top of this page:
+    i.e., on "Nightingale's Passcode Hunt", and you would be taken back to the
+    homepage.
+  </p>
+
+  <p>
+    If you are still facing issues, please contact the Puzzle Master at this
+    number: <b>+91 7250794009</b>
+  </p>
+{% endblock %}
