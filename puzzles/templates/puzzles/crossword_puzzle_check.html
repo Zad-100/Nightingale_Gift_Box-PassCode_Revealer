@@ -11,6 +11,9 @@
 
 {% load static %}
 
+{% load bootstrap4 %}
+
+
 
 {% block title %}
   <title>Crossword Puzzle</title>
@@ -113,7 +116,7 @@
       <p>
         <form method="post" class="form">
           {% csrf_token %}
-          {{ form.as_p }}
+          {% bootstrap_form form %}
           <button type="Submit">
             Check
           </button>
